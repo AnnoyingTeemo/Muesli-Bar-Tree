@@ -1,4 +1,4 @@
-import sys
+import sys, random
 from PyQt5 import QtWidgets
 #fruits, vegies, milk products, nuts, jams, juices
 class TestUI(QtWidgets.QWidget):
@@ -51,7 +51,8 @@ class TestUI(QtWidgets.QWidget):
 
         self.show()
     def Fruits_Clicked(self):
-        self.Cart.append("This is a test")
+        #self.Cart.append("This is a test")
+        #self.Cart.append(random.randint(0, 10000)) This crashed it
         self.show()
 if __name__ == "__main__":
  app = QtWidgets.QApplication(sys.argv)
