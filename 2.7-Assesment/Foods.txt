@@ -1,8 +1,8 @@
 Brocoli Vegetable 2 ea
-Almonds Nuts 3
-Carrot Vegetable 4
-Chocolate Milk_Product 5
-Strawberry_Jam Jam 3
-Potato Vegetable 2
-Cheese Milk_Product 4
+Almonds Nuts 3 kg
+Carrot Vegetable 1 ea
+Chocolate Milk_Product 5 ea
+Strawberry_Jam Jam 3 ea
+Potato Vegetable 2 kg
+Cheese Milk_Product 4 ea
 Apple Fruit 5 kg

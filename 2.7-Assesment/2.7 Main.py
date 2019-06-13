@@ -11,6 +11,7 @@ for word in foods:
         "Type of food": word.strip().split()[1].replace('_', ' '),
         #"Price": '${}'.format(word.strip().split()[2]),
         "Price": f'${word.strip().split()[2]}',
+        "Per Kg or Each": word.strip().split()[3].replace('_', ' ')
     }
     testDictionary["Food {}".format(i)] = food
     i += 1
