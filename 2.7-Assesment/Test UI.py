@@ -1,7 +1,7 @@
 import sys
 from PyQt5 import QtWidgets
 #fruits, vegies, milk products, nuts, jams, juices
-class PegGameWindow(QtWidgets.QWidget):
+class TestUI(QtWidgets.QWidget):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
         self.setup()
@@ -12,6 +12,7 @@ class PegGameWindow(QtWidgets.QWidget):
         self.Fruits = QtWidgets.QPushButton("Fruits", self)
         self.Fruits.setMinimumSize(130,130)
         self.Fruits.move(30, 10)
+        self.Fruits.clicked.connect(self.Fruits_Clicked)
 
         self.Vegetables = QtWidgets.QPushButton("Vegetables", self)
         self.Vegetables.setMinimumSize(130,130)
@@ -49,10 +50,11 @@ class PegGameWindow(QtWidgets.QWidget):
         self.Clear.move(1000,670)
 
         self.show()
+    def Fruits_Clicked(self):
+        self.Cart.append("This is a test")
+        self.show()
 if __name__ == "__main__":
  app = QtWidgets.QApplication(sys.argv)
- main_window = PegGameWindow()
+ main_window = TestUI()
  app.exec_()
 
-# 150, ~, 1150
-# the wooden one with glass windows
