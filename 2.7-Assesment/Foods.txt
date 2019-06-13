@@ -1,7 +1,8 @@
-Brocoli 2
-Spaghetti 3
-Carrot 4
-Chocolate 5
-Meatballs 3
-Potato 2
-Cheese 4
+Brocoli Vegetable 2 ea
+Almonds Nuts 3
+Carrot Vegetable 4
+Chocolate Milk_Product 5
+Strawberry_Jam Jam 3
+Potato Vegetable 2
+Cheese Milk_Product 4
+Apple Fruit 5 kg

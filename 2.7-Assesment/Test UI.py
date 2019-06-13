@@ -9,7 +9,7 @@ class PegGameWindow(QtWidgets.QWidget):
         self.setGeometry(0, 0, 1700, 800)
         self.setWindowTitle('Test UI')
         self.Foods = QtWidgets.QPushButton("Foods", self)
-        self.Foods.size(200, 200, self)
+        self.Foods
         self.Foods.move(500, 500)
         self.show()
 if __name__ == "__main__":
