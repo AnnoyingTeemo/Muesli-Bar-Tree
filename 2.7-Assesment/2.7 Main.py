@@ -3,10 +3,14 @@ foods = open("Foods.txt", "r")
 testDictionary = {}
 testList = []
 amountOfWords = 0
+i = 0
 for word in foods:
-    amountOfWords += 1
-for i in range(amountOfWords):
-    testDictionary["Food Name {}".format(i)] = foods.readline().rstrip()
+    food = {
+        "Name": word.strip().split()[0],
+        "Price": '${}'.format(word.strip().split()[1])
+    }
+    testDictionary["Food {}".format(i)] = food
+    i += 1
 
 print(testDictionary)
 
