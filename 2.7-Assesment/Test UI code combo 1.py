@@ -93,8 +93,6 @@ class TestUI(QtWidgets.QWidget):
 
         #Checkout Code
         self.Cart = QtWidgets.QTextBrowser(self)
-        self.Cart.append("Test")
-        self.Cart.append("Test2")
         self.Cart.setMinimumSize(450,650)
         self.Cart.move(1000,10)
 

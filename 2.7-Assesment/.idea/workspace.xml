@@ -36,8 +36,8 @@
       <file leaf-file-name="Test UI code combo 1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test UI code combo 1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="409" column="17" lean-forward="true" selection-start-line="409" selection-start-column="17" selection-end-line="409" selection-end-column="17" />
+            <state relative-caret-position="262">
+              <caret line="94" column="27" lean-forward="false" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
               <folding>
                 <element signature="e#107#125#0" expanded="true" />
               </folding>
@@ -78,6 +78,7 @@
     <findStrings>
       <find>currentorder</find>
       <find>current</find>
+      <find>Test</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -540,10 +541,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmEdu4.0/system/python_stubs/733431120/PyQt5/QtWidgets/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Test UI code combo 1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="409" column="17" lean-forward="true" selection-start-line="409" selection-start-column="17" selection-end-line="409" selection-end-column="17" />
+        <state relative-caret-position="262">
+          <caret line="94" column="27" lean-forward="false" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
           <folding>
             <element signature="e#107#125#0" expanded="true" />
           </folding>
