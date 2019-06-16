@@ -48,12 +48,16 @@ class TestUI(QtWidgets.QWidget):
         self.Clear = QtWidgets.QPushButton("Clear Cart", self)
         self.Clear.setMinimumSize(220,130)
         self.Clear.move(1000,670)
+        self.Clear.clicked.connect(self.Clear_Clicked)
 
         self.show()
+    #Code for buttons
     def Fruits_Clicked(self):
-        #self.Cart.append("This is a test")
+        self.Cart.append("This is a test")
         #self.Cart.append(random.randint(0, 10000)) This crashed it
         self.show()
+    def Clear_Clicked(self):
+        self.Cart.setText("")
 if __name__ == "__main__":
  app = QtWidgets.QApplication(sys.argv)
  main_window = TestUI()
