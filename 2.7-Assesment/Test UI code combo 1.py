@@ -93,8 +93,15 @@ class TestUI(QtWidgets.QWidget):
 
         #Checkout Code
         self.Cart = QtWidgets.QTextBrowser(self)
-        self.Cart.setMinimumSize(450,650)
+        self.Cart.setMinimumSize(450,600)
         self.Cart.move(1000,10)
+
+        #Total Text goes here, it needs to blend into the checkout
+        self.Total = QtWidgets.QTextBrowser(self)
+        self.Total.setMinimumSize(450,10)
+        self.Total.setText("Total: $0")
+        self.Total.setMaximumHeight(50)
+        self.Total.move(1000,610)
 
         self.Checkout = QtWidgets.QPushButton("Checkout", self)
         self.Checkout.setMinimumSize(220,130)
@@ -380,30 +387,75 @@ class TestUI(QtWidgets.QWidget):
     def Food0Clicked(self):
         self.Cart.append(f"{testDictionary['Food 0']['Name']}: {testDictionary['Food 0']['Price']}")
         self.currentOrders.append("Food 0")
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Food1Clicked(self):
         self.Cart.append(f"{testDictionary['Food 1']['Name']}: {testDictionary['Food 1']['Price']}")
         self.currentOrders.append("Food 1")
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Food2Clicked(self):
         self.Cart.append(f"{testDictionary['Food 2']['Name']}: {testDictionary['Food 2']['Price']}")
         self.currentOrders.append("Food 2")
+
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Food3Clicked(self):
         self.Cart.append(f"{testDictionary['Food 3']['Name']}: {testDictionary['Food 3']['Price']}")
         self.currentOrders.append("Food 3")
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Food4Clicked(self):
         self.Cart.append(f"{testDictionary['Food 4']['Name']}: {testDictionary['Food 4']['Price']}")
         self.currentOrders.append("Food 4")
+
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Food5Clicked(self):
         self.Cart.append(f"{testDictionary['Food 5']['Name']}: {testDictionary['Food 5']['Price']}")
         self.currentOrders.append("Food 5")
+
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Food6Clicked(self):
         self.Cart.append(f"{testDictionary['Food 6']['Name']}: {testDictionary['Food 6']['Price']}")
         self.currentOrders.append("Food 6")
+
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Food7Clicked(self):
         self.Cart.append(f"{testDictionary['Food 7']['Name']}: {testDictionary['Food 7']['Price']}")
         self.currentOrders.append("Food 7")
+
+        total = 0
+        for item in self.currentOrders:
+            total += testDictionary[item]["RawPrice"]
+            self.Total.setText(f"Total: ${total}")
     def Clear_Clicked(self):
         self.Cart.setText("")
         self.currentOrders = []
+        self.Total.setText("Total: $0")
     def CheckOut_Clicked(self):
         total = 0
         for item in self.currentOrders:
