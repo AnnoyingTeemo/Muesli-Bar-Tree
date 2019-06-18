@@ -261,7 +261,7 @@ class TestUI(QtWidgets.QWidget):
         self.Food11.hide()
 #        self.Food11.clicked.connect(self.Food11Clicked)
 
-        self.FoodsDictionary = {0: self.Food0, 1: self.Food1, 2: self.Food3, 3: self.Food3, 4: self.Food4, 5: self.Food5, 6: self.Food6, 7: self.Food7, 8: self.Food8, 9: self.Food9, 10: self.Food10, 11: self.Food11}
+        self.FoodsDictionary = {0: self.Food0, 1: self.Food1, 2: self.Food2, 3: self.Food3, 4: self.Food4, 5: self.Food5, 6: self.Food6, 7: self.Food7, 8: self.Food8, 9: self.Food9, 10: self.Food10, 11: self.Food11}
 
         self.currentOrders = []
         self.show()
@@ -271,66 +271,74 @@ class TestUI(QtWidgets.QWidget):
     def Veges_Clicked(self):
         #I need to find a better way to do this than 7 if statements
         #Temp solution i swear
-        try:
-            self.Food0.setText(testDictionary["Vegetable"][VegiesList[0]]["Name"])
-            self.Food0.show()
-        except KeyError:
-            pass
-        try:
-            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food1.show()
-        except KeyError:
-            pass
-        try:
-            self.Food2.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food2.show()
-        except KeyError:
-            pass
-        try:
-            self.Food3.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food3.show()
-        except KeyError:
-            pass
-        try:
-            self.Food4.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food4.show()
-        except KeyError:
-            pass
-        try:
-            self.Food5.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food5.show()
-        except KeyError:
-            pass
-        try:
-            self.Food6.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food6.show()
-        except KeyError:
-            pass
-        try:
-            self.Food7.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food7.show()
-        except KeyError:
-            pass
-        try:
-            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food1.show()
-        except KeyError:
-            pass
-        try:
-            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food1.show()
-        except KeyError:
-            pass
-        try:
-            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food1.show()
-        except KeyError:
-            pass
-        try:
-            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
-            self.Food1.show()
-        except KeyError:
-            pass
+
+        for i in range(len(VegiesList)):
+            self.FoodsDictionary[i].setText(testDictionary["Vegetable"][VegiesList[i]]["Name"])
+            self.FoodsDictionary[i].show()
+            print(i)
+            print(self.FoodsDictionary[i].objectName())
+            print(self.FoodsDictionary[i].pos())
+        #
+        # try:
+        #     self.Food0.setText(testDictionary["Vegetable"][VegiesList[0]]["Name"])
+        #     self.Food0.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food1.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food2.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food2.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food3.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food3.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food4.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food4.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food5.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food5.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food6.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food6.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food7.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food7.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food1.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food1.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food1.show()
+        # except KeyError:
+        #     pass
+        # try:
+        #     self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+        #     self.Food1.show()
+        # except KeyError:
+        #     pass
         #
         # if self.Food0.objectName() in VegiesList:
         #     self.Food0.show()
