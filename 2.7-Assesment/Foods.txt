@@ -7,3 +7,4 @@ Potato Vegetable 2 kg
 Cheese Milk_Product 4 ea
 Apple Fruit 5 kg
 Orange Juice 50 ea
+Pineapple Juice 700 ea
