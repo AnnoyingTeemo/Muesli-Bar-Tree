@@ -42,22 +42,22 @@ print(testDictionary)
 
 for item in testDictionary["Fruit"]:
         if testDictionary["Fruit"][item]["Type of food"] == "Fruit":
-            FruitsList.append(item.replace(' ', ''))
+            FruitsList.append(item)
 for item in testDictionary["Vegetable"]:
         if testDictionary["Vegetable"][item]["Type of food"] == "Vegetable":
-            VegiesList.append(item.replace(' ', ''))
+            VegiesList.append(item)
 for item in testDictionary["Milk Product"]:
         if testDictionary["Milk Product"][item]["Type of food"] == "Milk Product":
-            MilkProductsList.append(item.replace(' ', ''))
+            MilkProductsList.append(item)
 for item in testDictionary["Nuts"]:
         if testDictionary["Nuts"][item]["Type of food"] == "Nuts":
-            NutsList.append(item.replace(' ', ''))
+            NutsList.append(item)
 for item in testDictionary["Jam"]:
         if testDictionary["Jam"][item]["Type of food"] == "Jam":
-            JamsList.append(item.replace(' ', ''))
+            JamsList.append(item)
 for item in testDictionary["Juice"]:
         if testDictionary["Juice"][item]["Type of food"] == "Juice":
-            JuicesList.append(item.replace(' ', ''))
+            JuicesList.append(item)
 
 print(FruitsList)
 print(VegiesList)
@@ -71,6 +71,8 @@ class TestUI(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         self.setup()
     def setup(self):
+
+
         self.setGeometry(0, 0, 1500, 850)
         self.setWindowTitle('Test UI')
         #Buttons code goes here
@@ -189,76 +191,77 @@ class TestUI(QtWidgets.QWidget):
         self.Food0 = QtWidgets.QPushButton("Food0", self)
         self.Food0.setMinimumSize(130,130)
         self.Food0.move(30,200)
-        self.Food0.setObjectName("Food0")
+        self.Food0.setObjectName("Food 0")
         self.Food0.hide()
         #self.Food0.clicked.connect(self.Food0Clicked)
         self.Food1 = QtWidgets.QPushButton("Food1", self)
         self.Food1.setMinimumSize(130,130)
         self.Food1.move(190,200)
-        self.Food1.setObjectName("Food1")
+        self.Food1.setObjectName("Food 1")
         self.Food1.hide()
         self.Food1.clicked.connect(self.Food1Clicked)
         self.Food2 = QtWidgets.QPushButton("Food2", self)
         self.Food2.setMinimumSize(130,130)
         self.Food2.move(350,200)
-        self.Food2.setObjectName("Food2")
+        self.Food2.setObjectName("Food 2")
         self.Food2.hide()
        # self.Food2.clicked.connect(self.Food2Clicked)
         self.Food3 = QtWidgets.QPushButton("Food3", self)
         self.Food3.setMinimumSize(130,130)
         self.Food3.move(510,200)
-        self.Food3.setObjectName("Food3")
+        self.Food3.setObjectName("Food 3")
         self.Food3.hide()
       #  self.Food3.clicked.connect(self.Food3Clicked)
         self.Food4 = QtWidgets.QPushButton("Food4", self)
         self.Food4.setMinimumSize(130,130)
         self.Food4.move(670,200)
-        self.Food4.setObjectName("Food4")
+        self.Food4.setObjectName("Food 4")
         self.Food4.hide()
      #   self.Food4.clicked.connect(self.Food4Clicked)
         self.Food5 = QtWidgets.QPushButton("Food5", self)
         self.Food5.setMinimumSize(130,130)
         self.Food5.move(830,200)
-        self.Food5.setObjectName("Food5")
+        self.Food5.setObjectName("Food 5")
         self.Food5.hide()
     #    self.Food5.clicked.connect(self.Food5Clicked)
         self.Food6 = QtWidgets.QPushButton("Food6", self)
         self.Food6.setMinimumSize(130,130)
         self.Food6.move(30,330)
-        self.Food6.setObjectName("Food6")
+        self.Food6.setObjectName("Food 6")
         self.Food6.hide()
    #     self.Food6.clicked.connect(self.Food6Clicked)
         self.Food7 = QtWidgets.QPushButton("Food7", self)
         self.Food7.setMinimumSize(130,130)
         self.Food7.move(190,330)
-        self.Food7.setObjectName("Food7")
+        self.Food7.setObjectName("Food 7")
         self.Food7.hide()
   #      self.Food7.clicked.connect(self.Food7Clicked)
         self.Food8 = QtWidgets.QPushButton("Food8", self)
         self.Food8.setMinimumSize(130,130)
         self.Food8.move(350,500)
-        self.Food8.setObjectName("Food8")
+        self.Food8.setObjectName("Food 8")
         self.Food8.hide()
  #       self.Food8.clicked.connect(self.Food8Clicked)
         self.Food9 = QtWidgets.QPushButton("Food9", self)
         self.Food9.setMinimumSize(130,130)
         self.Food9.move(510,500)
-        self.Food9.setObjectName("Food9")
+        self.Food9.setObjectName("Food 9")
         self.Food9.hide()
 #        self.Food9.clicked.connect(self.Food9Clicked)
         self.Food10 = QtWidgets.QPushButton("Food10", self)
         self.Food10.setMinimumSize(130,130)
         self.Food10.move(670,500)
-        self.Food10.setObjectName("Food10")
+        self.Food10.setObjectName("Food 10")
         self.Food10.hide()
        # self.Food10.clicked.connect(self.Food10Clicked)
         self.Food11 = QtWidgets.QPushButton("Food11", self)
         self.Food11.setMinimumSize(130,130)
         self.Food11.move(830,500)
-        self.Food11.setObjectName("Food11")
+        self.Food11.setObjectName("Food 11")
         self.Food11.hide()
 #        self.Food11.clicked.connect(self.Food11Clicked)
 
+        self.FoodsDictionary = {0: self.Food0, 1: self.Food1, 2: self.Food3, 3: self.Food3, 4: self.Food4, 5: self.Food5, 6: self.Food6, 7: self.Food7, 8: self.Food8, 9: self.Food9, 10: self.Food10, 11: self.Food11}
 
         self.currentOrders = []
         self.show()
@@ -268,30 +271,91 @@ class TestUI(QtWidgets.QWidget):
     def Veges_Clicked(self):
         #I need to find a better way to do this than 7 if statements
         #Temp solution i swear
-        if self.Food0.objectName() in VegiesList:
+        try:
+            self.Food0.setText(testDictionary["Vegetable"][VegiesList[0]]["Name"])
             self.Food0.show()
-        else: self.Food0.hide()
-        if self.Food1.objectName() in VegiesList:
+        except KeyError:
+            pass
+        try:
+            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
             self.Food1.show()
-        else: self.Food1.hide()
-        if self.Food2.objectName() in VegiesList:
+        except KeyError:
+            pass
+        try:
+            self.Food2.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
             self.Food2.show()
-        else: self.Food2.hide()
-        if self.Food3.objectName() in VegiesList:
+        except KeyError:
+            pass
+        try:
+            self.Food3.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
             self.Food3.show()
-        else: self.Food3.hide()
-        if self.Food4.objectName() in VegiesList:
+        except KeyError:
+            pass
+        try:
+            self.Food4.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
             self.Food4.show()
-        else: self.Food4.hide()
-        if self.Food5.objectName() in VegiesList:
+        except KeyError:
+            pass
+        try:
+            self.Food5.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
             self.Food5.show()
-        else: self.Food5.hide()
-        if self.Food6.objectName() in VegiesList:
+        except KeyError:
+            pass
+        try:
+            self.Food6.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
             self.Food6.show()
-        else: self.Food6.hide()
-        if self.Food7.objectName() in VegiesList:
+        except KeyError:
+            pass
+        try:
+            self.Food7.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
             self.Food7.show()
-        else: self.Food7.hide()
+        except KeyError:
+            pass
+        try:
+            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+            self.Food1.show()
+        except KeyError:
+            pass
+        try:
+            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+            self.Food1.show()
+        except KeyError:
+            pass
+        try:
+            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+            self.Food1.show()
+        except KeyError:
+            pass
+        try:
+            self.Food1.setText(testDictionary["Vegetable"][VegiesList[1]]["Name"])
+            self.Food1.show()
+        except KeyError:
+            pass
+        #
+        # if self.Food0.objectName() in VegiesList:
+        #     self.Food0.show()
+        # else: self.Food0.hide()
+        # if self.Food1.objectName() in VegiesList:
+        #     self.Food1.show()
+        # else: self.Food1.hide()
+        # if self.Food2.objectName() in VegiesList:
+        #     self.Food2.show()
+        # else: self.Food2.hide()
+        # if self.Food3.objectName() in VegiesList:
+        #     self.Food3.show()
+        # else: self.Food3.hide()
+        # if self.Food4.objectName() in VegiesList:
+        #     self.Food4.show()
+        # else: self.Food4.hide()
+        # if self.Food5.objectName() in VegiesList:
+        #     self.Food5.show()
+        # else: self.Food5.hide()
+        # if self.Food6.objectName() in VegiesList:
+        #     self.Food6.show()
+        # else: self.Food6.hide()
+        # if self.Food7.objectName() in VegiesList:
+        #     self.Food7.show()
+        # else: self.Food7.hide()
 
 
 
