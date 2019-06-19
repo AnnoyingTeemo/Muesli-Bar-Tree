@@ -33,7 +33,8 @@ for word in foods:
         #"Price": '${}'.format(word.strip().split()[2]),
         "Price": f'${word.strip().split()[2]}',
         "Per Kg or Each": word.strip().split()[3].replace('_', ' '),
-        "ObjectName": f"Food {i}"
+        "ObjectName": f"Food {i}",
+        "RawPrice": float(word.strip().split()[2])
     }
     testDictionary[word.strip().split()[1].replace('_', ' ')]["Food {}".format(i)] = food
     i += 1
@@ -200,69 +201,69 @@ class TestUI(QtWidgets.QWidget):
         self.Food1.move(190,200)
         self.Food1.setObjectName("Food 1")
         self.Food1.hide()
-        #self.Food1.clicked.connect(self.Food1Clicked)
+        self.Food1.clicked.connect(self.Food1Clicked)
 
         self.Food2 = QtWidgets.QPushButton("Food2", self)
         self.Food2.setMinimumSize(130,130)
         self.Food2.move(350,200)
         self.Food2.setObjectName("Food 2")
         self.Food2.hide()
-       #self.Food2.clicked.connect(self.Food2Clicked)
+        self.Food2.clicked.connect(self.Food2Clicked)
 
         self.Food3 = QtWidgets.QPushButton("Food3", self)
         self.Food3.setMinimumSize(130,130)
         self.Food3.move(510,200)
         self.Food3.setObjectName("Food 3")
         self.Food3.hide()
-      #  self.Food3.clicked.connect(self.Food3Clicked)
+        self.Food3.clicked.connect(self.Food3Clicked)
         self.Food4 = QtWidgets.QPushButton("Food4", self)
         self.Food4.setMinimumSize(130,130)
         self.Food4.move(670,200)
         self.Food4.setObjectName("Food 4")
         self.Food4.hide()
-     #   self.Food4.clicked.connect(self.Food4Clicked)
+        self.Food4.clicked.connect(self.Food4Clicked)
         self.Food5 = QtWidgets.QPushButton("Food5", self)
         self.Food5.setMinimumSize(130,130)
         self.Food5.move(830,200)
         self.Food5.setObjectName("Food 5")
         self.Food5.hide()
-    #    self.Food5.clicked.connect(self.Food5Clicked)
+        self.Food5.clicked.connect(self.Food5Clicked)
         self.Food6 = QtWidgets.QPushButton("Food6", self)
         self.Food6.setMinimumSize(130,130)
         self.Food6.move(30,330)
         self.Food6.setObjectName("Food 6")
         self.Food6.hide()
-   #     self.Food6.clicked.connect(self.Food6Clicked)
+        self.Food6.clicked.connect(self.Food6Clicked)
         self.Food7 = QtWidgets.QPushButton("Food7", self)
         self.Food7.setMinimumSize(130,130)
         self.Food7.move(190,330)
         self.Food7.setObjectName("Food 7")
         self.Food7.hide()
-  #      self.Food7.clicked.connect(self.Food7Clicked)
+        self.Food7.clicked.connect(self.Food7Clicked)
         self.Food8 = QtWidgets.QPushButton("Food8", self)
         self.Food8.setMinimumSize(130,130)
         self.Food8.move(350,500)
         self.Food8.setObjectName("Food 8")
         self.Food8.hide()
- #       self.Food8.clicked.connect(self.Food8Clicked)
+        self.Food8.clicked.connect(self.Food8Clicked)
         self.Food9 = QtWidgets.QPushButton("Food9", self)
         self.Food9.setMinimumSize(130,130)
         self.Food9.move(510,500)
         self.Food9.setObjectName("Food 9")
         self.Food9.hide()
-#        self.Food9.clicked.connect(self.Food9Clicked)
+        self.Food9.clicked.connect(self.Food9Clicked)
         self.Food10 = QtWidgets.QPushButton("Food10", self)
         self.Food10.setMinimumSize(130,130)
         self.Food10.move(670,500)
         self.Food10.setObjectName("Food 10")
         self.Food10.hide()
-       # self.Food10.clicked.connect(self.Food10Clicked)
+        self.Food10.clicked.connect(self.Food10Clicked)
         self.Food11 = QtWidgets.QPushButton("Food11", self)
         self.Food11.setMinimumSize(130,130)
         self.Food11.move(830,500)
         self.Food11.setObjectName("Food 11")
         self.Food11.hide()
-#        self.Food11.clicked.connect(self.Food11Clicked)
+        self.Food11.clicked.connect(self.Food11Clicked)
 
         self.FoodsDictionary = {0: self.Food0, 1: self.Food1, 2: self.Food2, 3: self.Food3, 4: self.Food4, 5: self.Food5, 6: self.Food6, 7: self.Food7, 8: self.Food8, 9: self.Food9, 10: self.Food10, 11: self.Food11}
 
@@ -343,71 +344,104 @@ class TestUI(QtWidgets.QWidget):
         #self.Cart.append(f"{testDictionary['Food 0']['Name']}: {testDictionary['Food 0']['Price']}")
         #self.currentOrders.append()
         self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
         #[self.CurrentFoodType][self.food0.objectName]["Name"]
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
     def Food1Clicked(self):
-        self.Cart.append(f"{testDictionary['Food 1']['Name']}: {testDictionary['Food 1']['Price']}")
-        self.currentOrders.append("Food 1")
-
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food1.objectName()]["RawPrice"])
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
+
     def Food2Clicked(self):
-        self.Cart.append(f"{testDictionary['Food 2']['Name']}: {testDictionary['Food 2']['Price']}")
-        self.currentOrders.append("Food 2")
-
-
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food2.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food2.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food2.objectName()]["RawPrice"])
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
+
     def Food3Clicked(self):
-        self.Cart.append(f"{testDictionary['Food 3']['Name']}: {testDictionary['Food 3']['Price']}")
-        self.currentOrders.append("Food 3")
-
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food3.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food3.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food3.objectName()]["RawPrice"])
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
+
     def Food4Clicked(self):
-        self.Cart.append(f"{testDictionary['Food 4']['Name']}: {testDictionary['Food 4']['Price']}")
-        self.currentOrders.append("Food 4")
-
-
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food4.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food4.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food4.objectName()]["RawPrice"])
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
+
     def Food5Clicked(self):
-        self.Cart.append(f"{testDictionary['Food 5']['Name']}: {testDictionary['Food 5']['Price']}")
-        self.currentOrders.append("Food 5")
-
-
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food5.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food5.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food5.objectName()]["RawPrice"])
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
+
+
     def Food6Clicked(self):
-        self.Cart.append(f"{testDictionary['Food 6']['Name']}: {testDictionary['Food 6']['Price']}")
-        self.currentOrders.append("Food 6")
-
-
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food6.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food6.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food6.objectName()]["RawPrice"])
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
+
     def Food7Clicked(self):
-        self.Cart.append(f"{testDictionary['Food 7']['Name']}: {testDictionary['Food 7']['Price']}")
-        self.currentOrders.append("Food 7")
-
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food7.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food7.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food7.objectName()]["RawPrice"])
         total = 0
         for item in self.currentOrders:
-            total += testDictionary[item]["RawPrice"]
+            total += item
             self.Total.setText(f"Total: ${total}")
+
+    def Food8Clicked(self):
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food8.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food8.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food8.objectName()]["RawPrice"])
+        total = 0
+        for item in self.currentOrders:
+            total += item
+            self.Total.setText(f"Total: ${total}")
+
+    def Food9Clicked(self):
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food9.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food9.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food9.objectName()]["RawPrice"])
+        total = 0
+        for item in self.currentOrders:
+            total += item
+            self.Total.setText(f"Total: ${total}")
+
+    def Food10Clicked(self):
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food10.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food10.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food10.objectName()]["RawPrice"])
+        total = 0
+        for item in self.currentOrders:
+            total += item
+            self.Total.setText(f"Total: ${total}")
+
+    def Food11Clicked(self):
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food11.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food11.objectName()]["Price"]}')
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food11.objectName()]["RawPrice"])
+        total = 0
+        for item in self.currentOrders:
+            total += item
+            self.Total.setText(f"Total: ${total}")
+
+
+
+
     def Clear_Clicked(self):
         self.Cart.setText("")
         self.currentOrders = []
