@@ -1,6 +1,7 @@
 with open("Foods.txt", "r") as f: foods = f.readlines()
 #fruits, vegies, milk products, nuts, jams, juices
 import sys, random
+from collections import Counter
 from PyQt5 import QtWidgets
 #fruits, vegies, milk products, nuts, jams, juices
 
@@ -266,10 +267,21 @@ class TestUI(QtWidgets.QWidget):
         self.CurrentFoodType = "Fruit"
         self.show()
     def Food0Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
+        #self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
-        self.CurrentCart.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
+
+
         total = 0
+        cartText = []
+        #print(Counter(self.CurrentCart))
+        for item in Counter(self.CurrentCart):
+            #print(Counter(self.CurrentCart)[item])
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
+
         for item in self.currentOrders:
             total += item
             self.Total.setText(f"Total: ${total}")
