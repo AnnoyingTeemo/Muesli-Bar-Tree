@@ -32,7 +32,8 @@ for word in foods:
         "Type of food": word.strip().split()[1].replace('_', ' '),
         #"Price": '${}'.format(word.strip().split()[2]),
         "Price": f'${word.strip().split()[2]}',
-        "Per Kg or Each": word.strip().split()[3].replace('_', ' ')
+        "Per Kg or Each": word.strip().split()[3].replace('_', ' '),
+        "ObjectName": f"Food {i}"
     }
     testDictionary[word.strip().split()[1].replace('_', ' ')]["Food {}".format(i)] = food
     i += 1
@@ -72,7 +73,7 @@ class TestUI(QtWidgets.QWidget):
         self.setup()
     def setup(self):
 
-
+        self.CurrentFoodType = "Null"
         self.setGeometry(0, 0, 1500, 850)
         self.setWindowTitle('Test UI')
         #Buttons code goes here
@@ -276,8 +277,8 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(VegiesList)):
             self.FoodsDictionary[i].setText(testDictionary["Vegetable"][VegiesList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Vegetable"][VegiesList[i]]["Name"])
-
+            self.FoodsDictionary[i].setObjectName(testDictionary["Vegetable"][VegiesList[i]]["ObjectName"])
+        self.CurrentFoodType = "Vegetable"
 
         #self.Cart.append("This is a test")
         #self.Food1.show()
@@ -290,8 +291,8 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(MilkProductsList)):
             self.FoodsDictionary[i].setText(testDictionary["Milk Product"][MilkProductsList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Milk Product"][MilkProductsList[i]]["Name"])
-
+            self.FoodsDictionary[i].setObjectName(testDictionary["Milk Product"][MilkProductsList[i]]["ObjectName"])
+        self.CurrentFoodType = "Milk Product"
         #self.Cart.append("This is a test")
         #self.Food1.show()
         #self.Cart.append(random.randint(0, 10000)) This crashed it
@@ -302,8 +303,8 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(NutsList)):
             self.FoodsDictionary[i].setText(testDictionary["Nuts"][NutsList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Nuts"][NutsList[i]]["Name"])
-
+            self.FoodsDictionary[i].setObjectName(testDictionary["Nuts"][NutsList[i]]["ObjectName"])
+        self.CurrentFoodType = "Nuts"
         #self.Cart.append("This is a test")
         #self.Food1.show()
         #self.Cart.append(random.randint(0, 10000)) This crashed it
@@ -314,8 +315,8 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(JamsList)):
             self.FoodsDictionary[i].setText(testDictionary["Jam"][JamsList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Jam"][JamsList[i]]["Name"])
-
+            self.FoodsDictionary[i].setObjectName(testDictionary["Jam"][JamsList[i]]["ObjectName"])
+        self.CurrentFoodType = "Jam"
         #self.Cart.append("This is a test")
         #self.Food1.show()
         #self.Cart.append(random.randint(0, 10000)) This crashed it
@@ -326,28 +327,23 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(JuicesList)):
             self.FoodsDictionary[i].setText(testDictionary["Juice"][JuicesList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Juice"][JuicesList[i]]["Name"])
-
-        #self.Cart.append("This is a test")
-        #self.Food1.show()
-        #self.Cart.append(random.randint(0, 10000)) This crashed it
+            self.FoodsDictionary[i].setObjectName(testDictionary["Juice"][JuicesList[i]]["ObjectName"])
+        self.CurrentFoodType = "Juice"
         self.show()
     def Fruits_Clicked(self):
         for i in range(len(self.FoodsDictionary)):
             self.FoodsDictionary[i].hide()
         for i in range(len(FruitsList)):
-            self.FoodsDictionary[i].setText(testDictionary["Juice"][JuicesList[i]]["Name"])
+            self.FoodsDictionary[i].setText(testDictionary["Fruit"][FruitsList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Juice"][JuicesList[i]]["Name"])
-
-        #self.Cart.append("This is a test")
-        #self.Food1.show()
-        #self.Cart.append(random.randint(0, 10000)) This crashed it
+            self.FoodsDictionary[i].setObjectName(testDictionary["Fruit"][FruitsList[i]]["ObjectName"])
+        self.CurrentFoodType = "Fruit"
         self.show()
     def Food0Clicked(self):
         #self.Cart.append(f"{testDictionary['Food 0']['Name']}: {testDictionary['Food 0']['Price']}")
         #self.currentOrders.append()
-        self.Cart.append(self.Food0.objectName())
+        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
+        #[self.CurrentFoodType][self.food0.objectName]["Name"]
         total = 0
         for item in self.currentOrders:
             total += testDictionary[item]["RawPrice"]
