@@ -5,6 +5,9 @@ from collections import Counter
 from PyQt5 import QtWidgets
 #fruits, vegies, milk products, nuts, jams, juices
 
+
+
+def cint(codeinfo): return "{:,}".format(codeinfo)
 #Stuff for Setup
 FoodTypesList = ['fruits', 'vegies', 'milk_products', 'nuts', 'jams', 'juices']
 testDictionary = {
@@ -267,116 +270,171 @@ class TestUI(QtWidgets.QWidget):
         self.CurrentFoodType = "Fruit"
         self.show()
     def Food0Clicked(self):
-        #self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
         self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
-
-
         total = 0
         cartText = []
-        #print(Counter(self.CurrentCart))
         for item in Counter(self.CurrentCart):
-            #print(Counter(self.CurrentCart)[item])
             cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
         self.Cart.setText("")
         for item in cartText:
             self.Cart.append(item)
-
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food1Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Price"]}')
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food1.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food2Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food2.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food2.objectName()]["Price"]}')
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food2.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food2.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food2.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food3Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food3.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food3.objectName()]["Price"]}')
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food3.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food3.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food3.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food4Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food4.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food4.objectName()]["Price"]}')
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food4.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food4.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food4.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food5Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food5.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food5.objectName()]["Price"]}')
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food5.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food5.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food5.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food6Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food6.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food6.objectName()]["Price"]}')
+
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food6.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food6.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food6.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food7Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food7.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food7.objectName()]["Price"]}')
+
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food7.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food7.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food7.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food8Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food8.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food8.objectName()]["Price"]}')
+
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food8.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food8.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food8.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food9Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food9.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food9.objectName()]["Price"]}')
+
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food9.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food9.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food9.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food10Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food10.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food10.objectName()]["Price"]}')
+
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food10.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food10.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food10.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food11Clicked(self):
-        self.Cart.append(f'{testDictionary[self.CurrentFoodType][self.Food11.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food11.objectName()]["Price"]}')
+
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food11.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food11.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food11.objectName()]["Price"]}')
         total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
         for item in self.currentOrders:
             total += item
-            self.Total.setText(f"Total: ${total}")
-
+            self.Total.setText(f"Total: ${cint(total)}")
     def Clear_Clicked(self):
         self.Cart.setText("")
         self.currentOrders = []
+        self.CurrentCart = []
         self.Total.setText("Total: $0")
     def CheckOut_Clicked(self):
         total = 0
