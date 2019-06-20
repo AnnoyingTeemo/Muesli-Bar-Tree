@@ -441,6 +441,11 @@ class TestUI(QtWidgets.QWidget):
         for item in self.currentOrders:
             total += item
         print(total)
+        print(self.CurrentCart)
+        with open('Orders.txt', 'a') as f:
+            for item in self.CurrentCart:
+                f.write("%s," % item.rsplit(' ', 1)[0].replace(":", ""))
+            f.write("\n")
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()
