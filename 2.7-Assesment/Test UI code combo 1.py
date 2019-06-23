@@ -14,8 +14,8 @@ def cint(codeinfo): return "{:,}".format(codeinfo)
 FoodTypesList = ['fruits', 'vegies', 'milk_products', 'nuts', 'jams', 'juices']
 testDictionary = {
     "Fruit": {},
-    "Vegetable": {},
-    "Milk Product": {},
+    "Vegetables": {},
+    "Milk": {},
     "Nuts": {},
     "Jam": {},
     "Juice": {}
@@ -31,39 +31,26 @@ amountOfWords = 0
 #current order list
 currentOrders = []
 
-i = 0
-for word in foods["Vegetables"]:
-    food = {
-        "Name": word,
-        "Type of food": "Vegetable",
-        "Price": foods["Vegetables"][word]["Price"]
-
-    }
-    # food = {
-    #     "Name": word.strip().split()[0].replace('_', ' '),
-    #     "Type of food": word.strip().split()[1].replace('_', ' '),
-    #     #"Price": '${}'.format(word.strip().split()[2]),
-    #     "Price": f'${word.strip().split()[2]}',
-    #     "Per Kg or Each": word.strip().split()[3].replace('_', ' '),
-    #     "ObjectName": f"Food {i}",
-    #     "RawPrice": float(word.strip().split()[2])
-    # }
-    # testDictionary[word.strip().split()[1].replace('_', ' ')]["Food {}".format(i)] = food
-    # i += 1
-
-    food = {
-
-    }
+listOfFoodTypes = ["Vegetables", "Fruit", "Milk", "Nuts","Jams"]
+for i in range(len(listOfFoodTypes)):
+    for word in foods[listOfFoodTypes[i]]:
+        food = {
+            "Name": word,
+            "Type of food": listOfFoodTypes[i],
+            "Price": foods[listOfFoodTypes[i]][word]["Price"],
+            "Objectname":
+        }
+        testDictionary[listOfFoodTypes[i]]["Food {}".format(i)] = food
 print(testDictionary)
 
 for item in testDictionary["Fruit"]:
         if testDictionary["Fruit"][item]["Type of food"] == "Fruit":
             FruitsList.append(item)
-for item in testDictionary["Vegetable"]:
-        if testDictionary["Vegetable"][item]["Type of food"] == "Vegetable":
+for item in testDictionary["Vegetables"]:
+        if testDictionary["Vegetables"][item]["Type of food"] == "Vegetables":
             VegiesList.append(item)
-for item in testDictionary["Milk Product"]:
-        if testDictionary["Milk Product"][item]["Type of food"] == "Milk Product":
+for item in testDictionary["Milk"]:
+        if testDictionary["Milk"][item]["Type of food"] == "Milk":
             MilkProductsList.append(item)
 for item in testDictionary["Nuts"]:
         if testDictionary["Nuts"][item]["Type of food"] == "Nuts":
