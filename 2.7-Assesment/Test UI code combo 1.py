@@ -1,12 +1,14 @@
-with open("Foods.txt", "r") as f: foods = f.readlines()
+# with open("Foods.txt", "r") as f: foods = f.readlines()
+
+
 #fruits, vegies, milk products, nuts, jams, juices
-import sys, random
+import sys, random, json
 from collections import Counter
 from PyQt5 import QtWidgets
+
+with open("Foods.json", "r") as f: foods = f.read()
+foods = json.loads(foods)
 #fruits, vegies, milk products, nuts, jams, juices
-
-
-
 def cint(codeinfo): return "{:,}".format(codeinfo)
 #Stuff for Setup
 FoodTypesList = ['fruits', 'vegies', 'milk_products', 'nuts', 'jams', 'juices']
@@ -30,18 +32,28 @@ amountOfWords = 0
 currentOrders = []
 
 i = 0
-for word in foods:
+for word in foods["Vegetables"]:
     food = {
-        "Name": word.strip().split()[0].replace('_', ' '),
-        "Type of food": word.strip().split()[1].replace('_', ' '),
-        #"Price": '${}'.format(word.strip().split()[2]),
-        "Price": f'${word.strip().split()[2]}',
-        "Per Kg or Each": word.strip().split()[3].replace('_', ' '),
-        "ObjectName": f"Food {i}",
-        "RawPrice": float(word.strip().split()[2])
+        "Name": word,
+        "Type of food": "Vegetable",
+        "Price": foods["Vegetables"][word]["Price"]
+
     }
-    testDictionary[word.strip().split()[1].replace('_', ' ')]["Food {}".format(i)] = food
-    i += 1
+    # food = {
+    #     "Name": word.strip().split()[0].replace('_', ' '),
+    #     "Type of food": word.strip().split()[1].replace('_', ' '),
+    #     #"Price": '${}'.format(word.strip().split()[2]),
+    #     "Price": f'${word.strip().split()[2]}',
+    #     "Per Kg or Each": word.strip().split()[3].replace('_', ' '),
+    #     "ObjectName": f"Food {i}",
+    #     "RawPrice": float(word.strip().split()[2])
+    # }
+    # testDictionary[word.strip().split()[1].replace('_', ' ')]["Food {}".format(i)] = food
+    # i += 1
+
+    food = {
+
+    }
 print(testDictionary)
 
 for item in testDictionary["Fruit"]:
@@ -446,6 +458,16 @@ class TestUI(QtWidgets.QWidget):
             for item in self.CurrentCart:
                 f.write("%s," % item.rsplit(' ', 1)[0].replace(":", ""))
             f.write("\n")
+
+        fr = None
+        with open('Orders.json', 'r') as f:
+            fr = json.load(f)
+            print(fr)
+            fr['orders'].append(self.CurrentCart)
+
+        with open('Orders.json', 'w') as fw: json.dump(fr, fw)
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()

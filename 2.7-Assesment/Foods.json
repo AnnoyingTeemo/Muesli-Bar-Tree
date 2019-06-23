@@ -1,0 +1,27 @@
+{
+  "Vegetables": {
+    "Broccoli": {
+      "Price": 2
+    },
+    "Carrot": {
+      "Price": 1
+    }
+  },
+  "Fruit": {
+    "Apple": {
+      "Price": 5
+    }
+  },
+  "Milk": {
+    "Chocolate": {
+      "Price": 5
+    }
+  },
+  "Nuts": {
+    "Almonds": {
+      "Price": 3
+    }
+  },
+  "Jams": {},
+  "Juices": {}
+}
