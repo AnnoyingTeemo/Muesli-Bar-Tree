@@ -42,6 +42,25 @@ class TestUI(QtWidgets.QWidget):
                 self.AllOrders += f"{(food.split()[0].replace(':', ''))} "
             self.AllOrders += "\n"
         self.OrdersList.setText(self.AllOrders)
+
+        #make this first one a drop down menu
+        self.FoodTypetext = QtWidgets.QComboBox(self)
+        #self.FoodTypetext = QtWidgets.QLineEdit(self)
+        self.FoodTypetext.move(500,500)
+        self.FoodTypetext.resize(300,50)
+
+        self.FoodNametext = QtWidgets.QLineEdit(self)
+        self.FoodNametext.move(500,560)
+        self.FoodNametext.resize(300,50)
+
+        self.FoodPricetext = QtWidgets.QLineEdit(self)
+        self.FoodPricetext.move(500,620)
+        self.FoodPricetext.resize(300,50)
+
+        self.InputNewFood = QtWidgets.QPushButton("Input", self)
+        self.InputNewFood.move(550,680)
+        self.InputNewFood.setMinimumSize(200,50)
+
         self.show()
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
