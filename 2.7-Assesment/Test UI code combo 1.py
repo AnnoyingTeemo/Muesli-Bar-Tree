@@ -33,14 +33,26 @@ currentOrders = []
 
 listOfFoodTypes = ["Vegetables", "Fruit", "Milk", "Nuts","Jams"]
 for i in range(len(listOfFoodTypes)):
+    e = 0
     for word in foods[listOfFoodTypes[i]]:
         food = {
             "Name": word,
             "Type of food": listOfFoodTypes[i],
             "Price": foods[listOfFoodTypes[i]][word]["Price"],
-            "Objectname":
+            "ObjectName": f"Food {e}",
+            "RawPrice": foods[listOfFoodTypes[i]][word]["Price"]
+
+            #
+            # "Name": word.strip().split()[0].replace('_', ' '),
+            # "Type of food": word.strip().split()[1].replace('_', ' '),
+            # #"Price": '${}'.format(word.strip().split()[2]),
+            # "Price": f'${word.strip().split()[2]}',
+            # "Per Kg or Each": word.strip().split()[3].replace('_', ' '),
+            # "ObjectName": f"Food {i}",
+            # "RawPrice": float(word.strip().split()[2])
         }
-        testDictionary[listOfFoodTypes[i]]["Food {}".format(i)] = food
+        testDictionary[listOfFoodTypes[i]]["Food {}".format(e)] = food
+        e += 1
 print(testDictionary)
 
 for item in testDictionary["Fruit"]:
@@ -212,10 +224,10 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(self.FoodsDictionary)):
             self.FoodsDictionary[i].hide()
         for i in range(len(VegiesList)):
-            self.FoodsDictionary[i].setText(testDictionary["Vegetable"][VegiesList[i]]["Name"])
+            self.FoodsDictionary[i].setText(testDictionary["Vegetables"][VegiesList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Vegetable"][VegiesList[i]]["ObjectName"])
-        self.CurrentFoodType = "Vegetable"
+            self.FoodsDictionary[i].setObjectName(testDictionary["Vegetables"][VegiesList[i]]["ObjectName"])
+        self.CurrentFoodType = "Vegetables"
 
         #self.Cart.append(random.randint(0, 10000)) This crashed it
         self.show()
@@ -224,10 +236,10 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(self.FoodsDictionary)):
             self.FoodsDictionary[i].hide()
         for i in range(len(MilkProductsList)):
-            self.FoodsDictionary[i].setText(testDictionary["Milk Product"][MilkProductsList[i]]["Name"])
+            self.FoodsDictionary[i].setText(testDictionary["Milk"][MilkProductsList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Milk Product"][MilkProductsList[i]]["ObjectName"])
-        self.CurrentFoodType = "Milk Product"
+            self.FoodsDictionary[i].setObjectName(testDictionary["Milk"][MilkProductsList[i]]["ObjectName"])
+        self.CurrentFoodType = "Milk"
         #self.Cart.append(random.randint(0, 10000)) This crashed it
         self.show()
     def Nuts_Clicked(self):
@@ -269,18 +281,21 @@ class TestUI(QtWidgets.QWidget):
         self.CurrentFoodType = "Fruit"
         self.show()
     def Food0Clicked(self):
-        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
-        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
-        total = 0
-        cartText = []
-        for item in Counter(self.CurrentCart):
-            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
-        self.Cart.setText("")
-        for item in cartText:
-            self.Cart.append(item)
-        for item in self.currentOrders:
-            total += item
-            self.Total.setText(f"Total: ${cint(total)}")
+        try:
+            self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
+            self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
+            total = 0
+            cartText = []
+            for item in Counter(self.CurrentCart):
+                cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+            self.Cart.setText("")
+            for item in cartText:
+                self.Cart.append(item)
+            for item in self.currentOrders:
+                total += item
+                self.Total.setText(f"Total: ${cint(total)}")
+        except Exception as problem:
+            print(problem)
     def Food1Clicked(self):
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food1.objectName()]["RawPrice"])
         self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Price"]}')
@@ -441,18 +456,19 @@ class TestUI(QtWidgets.QWidget):
             total += item
         print(total)
         print(self.CurrentCart)
-        with open('Orders.txt', 'a') as f:
-            for item in self.CurrentCart:
-                f.write("%s," % item.rsplit(' ', 1)[0].replace(":", ""))
-            f.write("\n")
+        # with open('Orders.txt', 'a') as f:
+        #     for item in self.CurrentCart:
+        #         f.write("%s," % item.rsplit(' ', 1)[0].replace(":", ""))
+        #     f.write("\n")
 
         fr = None
-        with open('Orders.json', 'r') as f:
-            fr = json.load(f)
-            print(fr)
-            fr['orders'].append(self.CurrentCart)
+        if len(self.CurrentCart) > 0:
+            with open('Orders.json', 'r') as f:
+                fr = json.load(f)
+                print(fr)
+                fr['orders'].append(self.CurrentCart)
 
-        with open('Orders.json', 'w') as fw: json.dump(fr, fw)
+            with open('Orders.json', 'w') as fw: json.dump(fr, fw)
 
 
 if __name__ == "__main__":
