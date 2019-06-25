@@ -72,11 +72,48 @@ class TestUI(QtWidgets.QWidget):
         self.FoodPricetext.move(500,620)
         self.FoodPricetext.resize(300,50)
 
+
         self.InputNewFood = QtWidgets.QPushButton("Input", self)
         self.InputNewFood.move(550,680)
         self.InputNewFood.setMinimumSize(200,50)
         self.InputNewFood.clicked.connect(self.InputNewFoodPressed)
+
+        #Test delete button, this will be changed
+        self.DeleteFoodName = QtWidgets.QComboBox(self)
+        self.DeleteFoodName.move(100,500)
+        self.DeleteFoodName.resize(300,50)
+
+        self.DeleteFoodButton = QtWidgets.QPushButton("Delete", self)
+        self.DeleteFoodButton.move(150,680)
+        self.DeleteFoodButton.setMinimumSize(200,50)
+        self.DeleteFoodButton.clicked.connect(self.DeletePressed)
+
+
+        with open("Foods.json", "r") as z: Foods = z.read()
+        Foods = json.loads(Foods)
+        FoodTypesList = ['Fruit', 'Vegetables', 'Milk', 'Nuts', 'Jams', 'Juices']
+
+        for item in FoodTypesList:
+            for Food in Foods[item]:
+                self.DeleteFoodName.addItem(f"{item} {Food}")
+
         self.show()
+    def DeletePressed(self):
+        with open('Foods.json', 'r') as f:
+                fr = json.load(f)
+                print(fr)
+                del (fr[self.DeleteFoodName.currentText().split()[0]][self.DeleteFoodName.currentText().split(' ', 1)[1]])
+        with open('Foods.json', 'w') as fw: json.dump(fr, fw)
+        self.DeleteFoodName.clear()
+        with open("Foods.json", "r") as z: Foods = z.read()
+        Foods = json.loads(Foods)
+        FoodTypesList = ['Fruit', 'Vegetables', 'Milk', 'Nuts', 'Jams', 'Juices']
+
+        for item in FoodTypesList:
+            for Food in Foods[item]:
+                self.DeleteFoodName.addItem(f"{item} {Food}")
+
+
     def InputNewFoodPressed(self):
         fr = None
         if len(self.FoodNametext.text()) > 0 and len(self.FoodPricetext.text()) > 0:

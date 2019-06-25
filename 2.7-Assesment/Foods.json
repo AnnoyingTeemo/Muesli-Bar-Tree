@@ -1,1 +1,1 @@
-{"Vegetables": {"Broccoli": {"Price": 2.5}, "Carrot": {"Price": 1}, "yes": {"Price": 5}, "test3": {"Price": 4.0}, "4": {"Price": 3.0}}, "Fruit": {"Apple": {"Price": 5}, "Test": {"Price": 12}}, "Milk": {"Chocolate": {"Price": 5}}, "Nuts": {"Almonds": {"Price": 3}}, "Jams": {"Strawberry Jam": {"Price": 60.0}}, "Juices": {}}
+{"Vegetables": {"Broccoli": {"Price": 2.5}, "Carrot": {"Price": 1}}, "Fruit": {"Apple": {"Price": 5}}, "Milk": {"Chocolate": {"Price": 5}}, "Nuts": {"Almonds": {"Price": 3}}, "Jams": {"Strawberry Jam": {"Price": 60.0}}, "Juices": {}}
