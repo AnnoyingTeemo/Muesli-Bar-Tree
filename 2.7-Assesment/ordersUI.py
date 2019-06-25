@@ -21,6 +21,7 @@ for order in orders['orders']:
 
 class TestUI(QtWidgets.QWidget):
     def __init__(self):
+
         QtWidgets.QWidget.__init__(self)
         self.setup()
     def setup(self):
@@ -32,11 +33,12 @@ class TestUI(QtWidgets.QWidget):
         self.AddFood = QtWidgets.QPushButton("Add Food", self)
         self.AddFood.setMinimumSize(130,130)
         self.AddFood.move(500,10)
+        self.AddFood.clicked.connect(self.Foods_Clicked)
 
         self.Orders = QtWidgets.QPushButton("Orders", self)
         self.Orders.setMinimumSize(130,130)
         self.Orders.move(30, 10)
-        #self.Orders.clicked.connect(self.Orders_Clicked)
+        self.Orders.clicked.connect(self.Orders_Clicked)
 
 
         self.OrdersList = QtWidgets.QTextBrowser(self)
@@ -97,6 +99,16 @@ class TestUI(QtWidgets.QWidget):
             for Food in Foods[item]:
                 self.DeleteFoodName.addItem(f"{item} {Food}")
 
+
+        #Buttons Code is here
+        self.Food0 = QtWidgets.QPushButton("Food0", self)
+        self.Food0.setMinimumSize(130,130)
+        self.Food0.move(30,200)
+        self.Food0.setObjectName("Food 0")
+        self.Food0.hide()
+        #self.Food0.clicked.connect(self.Food0Clicked)
+
+
         self.show()
     def DeletePressed(self):
         with open('Foods.json', 'r') as f:
@@ -138,9 +150,35 @@ class TestUI(QtWidgets.QWidget):
 
         self.FoodNametext.clear()
         self.FoodPricetext.clear()
-        
+
         self.RefreshDeleteTab()
+    def Orders_Clicked(self):
+        self.hideFoods()
+        self.showOrders()
+    def Foods_Clicked(self):
+        self.hideOrders()
+        self.showFoods()
+    def hideFoods(self):
+        self.DeleteFoodName.hide()
+        self.DeleteFoodButton.hide()
+        self.InputNewFood.hide()
+        self.FoodPricetext.hide()
+        self.FoodNametext.hide()
+        self.FoodTypetext.hide()
+    def showFoods(self):
+        self.DeleteFoodName.show()
+        self.DeleteFoodButton.show()
+        self.InputNewFood.show()
+        self.FoodPricetext.show()
+        self.FoodNametext.show()
+        self.FoodTypetext.show()
+    def showOrders(self):
+        self.OrdersList.show()
+    def hideOrders(self):
+        self.OrdersList.hide()
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()
     app.exec_()
+    #sys.exit(app.exec_())
