@@ -17,8 +17,8 @@ testDictionary = {
     "Vegetables": {},
     "Milk": {},
     "Nuts": {},
-    "Jam": {},
-    "Juice": {}
+    "Jams": {},
+    "Juices": {}
 }
 FruitsList = []
 VegiesList = []
@@ -31,7 +31,7 @@ amountOfWords = 0
 #current order list
 currentOrders = []
 
-listOfFoodTypes = ["Vegetables", "Fruit", "Milk", "Nuts","Jams"]
+listOfFoodTypes = ["Vegetables", "Fruit", "Milk", "Nuts","Jams", "Juices"]
 for i in range(len(listOfFoodTypes)):
     e = 0
     for word in foods[listOfFoodTypes[i]]:
@@ -67,11 +67,11 @@ for item in testDictionary["Milk"]:
 for item in testDictionary["Nuts"]:
         if testDictionary["Nuts"][item]["Type of food"] == "Nuts":
             NutsList.append(item)
-for item in testDictionary["Jam"]:
-        if testDictionary["Jam"][item]["Type of food"] == "Jam":
+for item in testDictionary["Jams"]:
+        if testDictionary["Jams"][item]["Type of food"] == "Jams":
             JamsList.append(item)
-for item in testDictionary["Juice"]:
-        if testDictionary["Juice"][item]["Type of food"] == "Juice":
+for item in testDictionary["Juices"]:
+        if testDictionary["Juices"][item]["Type of food"] == "Juices":
             JuicesList.append(item)
 print(FruitsList)
 print(VegiesList)
@@ -256,20 +256,21 @@ class TestUI(QtWidgets.QWidget):
         for i in range(len(self.FoodsDictionary)):
             self.FoodsDictionary[i].hide()
         for i in range(len(JamsList)):
-            self.FoodsDictionary[i].setText(testDictionary["Jam"][JamsList[i]]["Name"])
+            self.FoodsDictionary[i].setText(testDictionary["Jams"][JamsList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Jam"][JamsList[i]]["ObjectName"])
-        self.CurrentFoodType = "Jam"
+            self.FoodsDictionary[i].setObjectName(testDictionary["Jams"][JamsList[i]]["ObjectName"])
+        self.CurrentFoodType = "Jams"
         #self.Cart.append(random.randint(0, 10000)) This crashed it
         self.show()
+
     def Juices_Clicked(self):
         for i in range(len(self.FoodsDictionary)):
             self.FoodsDictionary[i].hide()
         for i in range(len(JuicesList)):
-            self.FoodsDictionary[i].setText(testDictionary["Juice"][JuicesList[i]]["Name"])
+            self.FoodsDictionary[i].setText(testDictionary["Juices"][JuicesList[i]]["Name"])
             self.FoodsDictionary[i].show()
-            self.FoodsDictionary[i].setObjectName(testDictionary["Juice"][JuicesList[i]]["ObjectName"])
-        self.CurrentFoodType = "Juice"
+            self.FoodsDictionary[i].setObjectName(testDictionary["Juices"][JuicesList[i]]["ObjectName"])
+        self.CurrentFoodType = "Juices"
         self.show()
     def Fruits_Clicked(self):
         for i in range(len(self.FoodsDictionary)):
@@ -281,21 +282,18 @@ class TestUI(QtWidgets.QWidget):
         self.CurrentFoodType = "Fruit"
         self.show()
     def Food0Clicked(self):
-        try:
-            self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
-            self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
-            total = 0
-            cartText = []
-            for item in Counter(self.CurrentCart):
-                cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
-            self.Cart.setText("")
-            for item in cartText:
-                self.Cart.append(item)
-            for item in self.currentOrders:
-                total += item
-                self.Total.setText(f"Total: ${cint(total)}")
-        except Exception as problem:
-            print(problem)
+        self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
+        self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
+        total = 0
+        cartText = []
+        for item in Counter(self.CurrentCart):
+            cartText.append(f"{item} * {Counter(self.CurrentCart)[item]}")
+        self.Cart.setText("")
+        for item in cartText:
+            self.Cart.append(item)
+        for item in self.currentOrders:
+            total += item
+            self.Total.setText(f"Total: ${cint(total)}")
     def Food1Clicked(self):
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food1.objectName()]["RawPrice"])
         self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Price"]}')

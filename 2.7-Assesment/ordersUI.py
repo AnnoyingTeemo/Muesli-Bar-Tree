@@ -6,6 +6,12 @@ from PyQt5 import QtWidgets
 
 with open("Orders.json", "r") as f: orders = f.read()
 orders = json.loads(orders)
+
+
+
+# with open("Foods.json", "a") as f: foods = f.read()
+# foods = json.loads(foods)
+
 currentOrders = []
 print(orders)
 
@@ -39,13 +45,22 @@ class TestUI(QtWidgets.QWidget):
         self.AllOrders = ""
         for item in currentOrders:
             for food in item:
-                self.AllOrders += f"{(food.split()[0].replace(':', ''))} "
+                self.AllOrders += f"{(food.rsplit(' ', 1)[0].replace(':', ''))} "
             self.AllOrders += "\n"
         self.OrdersList.setText(self.AllOrders)
 
         #make this first one a drop down menu
         self.FoodTypetext = QtWidgets.QComboBox(self)
         #self.FoodTypetext = QtWidgets.QLineEdit(self)
+
+        #fix the names of these later
+        self.FoodTypetext.addItem("Vegetables")
+        self.FoodTypetext.addItem("Fruit")
+        self.FoodTypetext.addItem("Milk")
+        self.FoodTypetext.addItem("Nuts")
+        self.FoodTypetext.addItem("Juices")
+        self.FoodTypetext.addItem("Jams")
+
         self.FoodTypetext.move(500,500)
         self.FoodTypetext.resize(300,50)
 
@@ -60,8 +75,25 @@ class TestUI(QtWidgets.QWidget):
         self.InputNewFood = QtWidgets.QPushButton("Input", self)
         self.InputNewFood.move(550,680)
         self.InputNewFood.setMinimumSize(200,50)
-
+        self.InputNewFood.clicked.connect(self.InputNewFoodPressed)
         self.show()
+    def InputNewFoodPressed(self):
+        fr = None
+
+        NewFood = {
+            "Name": self.FoodNametext.text(),
+            "Price": self.FoodPricetext.text()
+        }
+        NewFoodDict = {
+            NewFood["Name"]: {
+                "Price": float(NewFood["Price"])
+            }
+        }
+        with open('Foods.json', 'r') as f:
+                fr = json.load(f)
+                print(fr)
+                fr[self.FoodTypetext.currentText()][NewFood["Name"]] = (NewFoodDict[NewFood["Name"]])
+        with open('Foods.json', 'w') as fw: json.dump(fr, fw)
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()
