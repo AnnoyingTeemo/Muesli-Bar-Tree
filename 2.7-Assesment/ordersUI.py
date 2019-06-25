@@ -79,21 +79,23 @@ class TestUI(QtWidgets.QWidget):
         self.show()
     def InputNewFoodPressed(self):
         fr = None
-
-        NewFood = {
-            "Name": self.FoodNametext.text(),
-            "Price": self.FoodPricetext.text()
-        }
-        NewFoodDict = {
-            NewFood["Name"]: {
-                "Price": float(NewFood["Price"])
+        if len(self.FoodNametext.text()) > 0 and len(self.FoodPricetext.text()) > 0:
+            NewFood = {
+                "Name": self.FoodNametext.text(),
+                "Price": self.FoodPricetext.text()
             }
-        }
-        with open('Foods.json', 'r') as f:
-                fr = json.load(f)
-                print(fr)
-                fr[self.FoodTypetext.currentText()][NewFood["Name"]] = (NewFoodDict[NewFood["Name"]])
-        with open('Foods.json', 'w') as fw: json.dump(fr, fw)
+            NewFoodDict = {
+                NewFood["Name"]: {
+                    "Price": float(NewFood["Price"])
+                }
+            }
+            with open('Foods.json', 'r') as f:
+                    fr = json.load(f)
+                    print(fr)
+                    fr[self.FoodTypetext.currentText()][NewFood["Name"]] = (NewFoodDict[NewFood["Name"]])
+            with open('Foods.json', 'w') as fw: json.dump(fr, fw)
+        else:
+            print("Please enter some things into the box")
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()
