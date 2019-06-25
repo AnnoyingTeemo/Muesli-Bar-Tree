@@ -104,6 +104,9 @@ class TestUI(QtWidgets.QWidget):
                 print(fr)
                 del (fr[self.DeleteFoodName.currentText().split()[0]][self.DeleteFoodName.currentText().split(' ', 1)[1]])
         with open('Foods.json', 'w') as fw: json.dump(fr, fw)
+
+        self.RefreshDeleteTab()
+    def RefreshDeleteTab(self):
         self.DeleteFoodName.clear()
         with open("Foods.json", "r") as z: Foods = z.read()
         Foods = json.loads(Foods)
@@ -112,7 +115,6 @@ class TestUI(QtWidgets.QWidget):
         for item in FoodTypesList:
             for Food in Foods[item]:
                 self.DeleteFoodName.addItem(f"{item} {Food}")
-
 
     def InputNewFoodPressed(self):
         fr = None
@@ -133,6 +135,11 @@ class TestUI(QtWidgets.QWidget):
             with open('Foods.json', 'w') as fw: json.dump(fr, fw)
         else:
             print("Please enter some things into the box")
+
+        self.FoodNametext.clear()
+        self.FoodPricetext.clear()
+        
+        self.RefreshDeleteTab()
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()
