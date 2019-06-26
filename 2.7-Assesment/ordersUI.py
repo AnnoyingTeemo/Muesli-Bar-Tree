@@ -7,18 +7,28 @@ from PyQt5 import QtWidgets
 
 with open("Orders.json", "r") as f: orders = f.read()
 orders = json.loads(orders)
+f.close()
+def refreshCurrentOrders():
 
+    with open("Orders.json", "r") as f: orders = f.read()
+    orders = json.loads(orders)
 
+    newcurrentOrders = []
+    for order in orders['orders']:
+        newcurrentOrders.append(order)
+    print(newcurrentOrders)
+    return newcurrentOrders
 
 # with open("Foods.json", "a") as f: foods = f.read()
 # foods = json.loads(foods)
 
 currentOrders = []
 print(orders)
+currentOrders = refreshCurrentOrders()
 
-for order in orders['orders']:
-    print(order)
-    currentOrders.append(order)
+# for order in orders['orders']:
+#     print(order)
+#     currentOrders.append(order)
 class TestUI(QtWidgets.QWidget):
     def __init__(self):
 
@@ -163,10 +173,18 @@ class TestUI(QtWidgets.QWidget):
     def cancel_order(self):
         with open('Orders.json', 'r') as f:
                     fr = json.load(f)
-                    print(fr)
-                    del[fr[self.selectedOrder]]
+                    #print(fr)
+                    #print(self.selectedOrder)
+                    del(fr["orders"][self.selectedOrder])
+                    #del[fr[][self.selectedOrder]]
         with open('Orders.json', 'w') as fw: json.dump(fr, fw)
+        currentOrders = refreshCurrentOrders()
+        self.OrdersList.clear()
+        self.hideButtons()
+        self.showOrders()
+        self.showButtons()
     def buttonclicked(self, i):
+        currentOrders = refreshCurrentOrders()
         self.OrdersList.clear()
         self.selectedOrder = i
         for item in currentOrders[i]:
@@ -215,6 +233,8 @@ class TestUI(QtWidgets.QWidget):
 
         self.RefreshDeleteTab()
     def Orders_Clicked(self):
+        currentOrders = refreshCurrentOrders()
+        print(currentOrders)
         self.hideFoods()
         self.showOrders()
         self.showButtons()
@@ -248,6 +268,7 @@ class TestUI(QtWidgets.QWidget):
         # for button in self.buttons:
         #     button.show()
         #print(len(currentOrders))
+        currentOrders = refreshCurrentOrders()
         if len(currentOrders) <= 18:
             for i in range(len(currentOrders)):
                 self.buttons[i].show()
