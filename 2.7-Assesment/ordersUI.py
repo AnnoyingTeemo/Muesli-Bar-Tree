@@ -28,7 +28,7 @@ class TestUI(QtWidgets.QWidget):
         self.setGeometry(0, 0, 1500, 850)
         self.setWindowTitle('Test UI')
 
-
+        self.selectedOrder = None
         #Buttons go here
         self.AddFood = QtWidgets.QPushButton("Add Food", self)
         self.AddFood.setMinimumSize(130,130)
@@ -145,13 +145,30 @@ class TestUI(QtWidgets.QWidget):
         #self.Food0.hide()
         #self.Food0.clicked.connect(self.Food0Clicked)
 
+        self.completeOrder = QtWidgets.QPushButton("Complete Order", self)
+        self.completeOrder.setMinimumSize(220,130)
+        self.completeOrder.move(1230,670)
+
+        self.cancelOrder = QtWidgets.QPushButton("Cancel Order", self)
+        self.cancelOrder.setMinimumSize(220,130)
+        self.cancelOrder.move(1000,670)
+        self.cancelOrder.clicked.connect(self.cancel_order)
+
         self.hideButtons()
         self.hideOrders()
         self.hideFoods()
 
         self.show()
+
+    def cancel_order(self):
+        with open('Orders.json', 'r') as f:
+                    fr = json.load(f)
+                    print(fr)
+                    del[fr[self.selectedOrder]]
+        with open('Orders.json', 'w') as fw: json.dump(fr, fw)
     def buttonclicked(self, i):
         self.OrdersList.clear()
+        self.selectedOrder = i
         for item in currentOrders[i]:
             self.OrdersList.append(item)
 
@@ -221,7 +238,11 @@ class TestUI(QtWidgets.QWidget):
         self.FoodTypetext.show()
     def showOrders(self):
         self.OrdersList.show()
+        self.cancelOrder.show()
+        self.completeOrder.show()
     def hideOrders(self):
+        self.cancelOrder.hide()
+        self.completeOrder.hide()
         self.OrdersList.hide()
     def showButtons(self):
         # for button in self.buttons:
