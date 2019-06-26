@@ -227,8 +227,12 @@ class TestUI(QtWidgets.QWidget):
         # for button in self.buttons:
         #     button.show()
         #print(len(currentOrders))
-        for i in range(len(currentOrders)):
-            self.buttons[i].show()
+        if len(currentOrders) <= 18:
+            for i in range(len(currentOrders)):
+                self.buttons[i].show()
+        else:
+            for i in range(18):
+                self.buttons[i].show()
         #for item in currentOrders:
 
 
