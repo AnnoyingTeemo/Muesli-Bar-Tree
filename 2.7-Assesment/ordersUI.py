@@ -2,6 +2,7 @@
 #fruits, vegies, milk products, nuts, jams, juices
 import sys, random, json
 from collections import Counter
+from functools import partial
 from PyQt5 import QtWidgets
 
 with open("Orders.json", "r") as f: orders = f.read()
@@ -18,7 +19,6 @@ print(orders)
 for order in orders['orders']:
     print(order)
     currentOrders.append(order)
-
 class TestUI(QtWidgets.QWidget):
     def __init__(self):
 
@@ -45,6 +45,7 @@ class TestUI(QtWidgets.QWidget):
         self.OrdersList.setMinimumSize(450,600)
         self.OrdersList.move(1000,10)
         self.AllOrders = ""
+        #code to show orders
         for item in currentOrders:
             for food in item:
                 self.AllOrders += f"{(food.rsplit(' ', 1)[0].replace(':', ''))} "
@@ -102,14 +103,58 @@ class TestUI(QtWidgets.QWidget):
 
         #Buttons Code is here
         self.Food0 = QtWidgets.QPushButton("Food0", self)
-        self.Food0.setMinimumSize(130,130)
-        self.Food0.move(30,200)
-        self.Food0.setObjectName("Food 0")
-        self.Food0.hide()
+        self.Food1 = QtWidgets.QPushButton("Food1", self)
+        self.Food2 = QtWidgets.QPushButton("Food2", self)
+        self.Food3 = QtWidgets.QPushButton("Food3", self)
+        self.Food4 = QtWidgets.QPushButton("Food4", self)
+        self.Food5 = QtWidgets.QPushButton("Food5", self)
+        self.Food6 = QtWidgets.QPushButton("Food6", self)
+        self.Food7 = QtWidgets.QPushButton("Food7", self)
+        self.Food8 = QtWidgets.QPushButton("Food8", self)
+        self.Food9 = QtWidgets.QPushButton("Food9", self)
+        self.Food10 = QtWidgets.QPushButton("Food10", self)
+        self.Food11 = QtWidgets.QPushButton("Food11", self)
+        self.Food12 = QtWidgets.QPushButton("Food12", self)
+        self.Food13 = QtWidgets.QPushButton("Food13", self)
+        self.Food14 = QtWidgets.QPushButton("Food14", self)
+        self.Food15 = QtWidgets.QPushButton("Food15", self)
+        self.Food16 = QtWidgets.QPushButton("Food16", self)
+        self.Food17 = QtWidgets.QPushButton("Food17", self)
+
+        self.buttons = [self.Food0, self.Food1, self.Food2, self.Food3, self.Food4, self.Food5, self.Food6, self.Food7, self.Food8, self.Food9, self.Food10, self.Food11, self.Food12, self.Food13, self.Food14, self.Food15, self.Food16, self.Food17]
+
+        i = 0
+        x = 30
+        y= 200
+        for Button in self.buttons:
+            Button.setMinimumSize(130,130)
+            Button.setObjectName(f"Order {i}")
+            Button.setText(f"Order {i+1}")
+            Button.move(x,y)
+            Button.clicked.connect(partial(self.buttonclicked, i))
+            x += 160
+            if x > 830:
+                x = 30
+                y += 130
+            i += 1
+            print(i,x,y)
+            Button.hide()
+        #self.Food0.setMinimumSize(130,130)
+        #self.Food0.move(30,200)
+        #self.Food0.setObjectName("Food 0")
+        #self.Food0.hide()
         #self.Food0.clicked.connect(self.Food0Clicked)
 
+        self.hideButtons()
+        self.hideOrders()
+        self.hideFoods()
 
         self.show()
+    def buttonclicked(self, i):
+        self.OrdersList.clear()
+        for item in currentOrders[i]:
+            self.OrdersList.append(item)
+
     def DeletePressed(self):
         with open('Foods.json', 'r') as f:
                 fr = json.load(f)
@@ -155,9 +200,11 @@ class TestUI(QtWidgets.QWidget):
     def Orders_Clicked(self):
         self.hideFoods()
         self.showOrders()
+        self.showButtons()
     def Foods_Clicked(self):
         self.hideOrders()
         self.showFoods()
+        self.hideButtons()
     def hideFoods(self):
         self.DeleteFoodName.hide()
         self.DeleteFoodButton.hide()
@@ -176,7 +223,23 @@ class TestUI(QtWidgets.QWidget):
         self.OrdersList.show()
     def hideOrders(self):
         self.OrdersList.hide()
+    def showButtons(self):
+        # for button in self.buttons:
+        #     button.show()
+        #print(len(currentOrders))
+        for i in range(len(currentOrders)):
+            self.buttons[i].show()
+        #for item in currentOrders:
 
+
+            #for food in item:
+
+                #self.AllOrders += f"{(food.rsplit(' ', 1)[0].replace(':', ''))} "
+            #self.AllOrders += "\n"
+
+    def hideButtons(self):
+        for button in self.buttons:
+            button.hide()
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()
