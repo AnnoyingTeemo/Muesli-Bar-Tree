@@ -485,7 +485,7 @@ class CheckoutUI(QtWidgets.QWidget):
     def setupCheckout(self):
         #self.CurrentCart = []
         #self.CurrentFoodType = "Null"
-        self.setGeometry(0, 0, 400, 200)
+        self.setGeometry(0, 0, 400, 500)
         self.setWindowTitle('Checkout')
         self.currentCart = TestUI.checkoutCart
         self.Name = QtWidgets.QLineEdit(self)
@@ -504,10 +504,14 @@ class CheckoutUI(QtWidgets.QWidget):
         self.show()
 
     def cardInfo(self, posx, posy):
-        #self.CardNumber = QtWidgets.QLineEdit(self)
+        self.CardNumber = QtWidgets.QLineEdit(self)
+        self.SecurityCode = QtWidgets.QLineEdit(self)
         self.ExpireMonth = QtWidgets.QComboBox(self)
-        self.ExpireMonth.move(posx,posy)
         self.ExpireYear = QtWidgets.QComboBox(self)
+
+        self.CardNumber.move(posx,posy + 50)
+        self.SecurityCode.move(posx, posy + 100)
+        self.ExpireMonth.move(posx,posy)
         self.ExpireYear.move(posx + 120,posy)
         for i in range (12):
             self.ExpireMonth.addItem(calendar.month_name[i + 1])
