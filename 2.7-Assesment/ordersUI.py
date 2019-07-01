@@ -169,7 +169,6 @@ class TestUI(QtWidgets.QWidget):
         self.hideFoods()
 
         self.show()
-
     def cancel_order(self):
         with open('Orders.json', 'r') as f:
                     fr = json.load(f)
@@ -286,6 +285,10 @@ class TestUI(QtWidgets.QWidget):
     def hideButtons(self):
         for button in self.buttons:
             button.hide()
+
+
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     main_window = TestUI()

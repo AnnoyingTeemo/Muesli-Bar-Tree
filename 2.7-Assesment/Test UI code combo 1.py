@@ -2,7 +2,7 @@
 
 
 #fruits, vegies, milk products, nuts, jams, juices
-import sys, random, json
+import sys, random, json, datetime, calendar
 from collections import Counter
 from PyQt5 import QtWidgets
 
@@ -30,6 +30,10 @@ amountOfWords = 0
 
 #current order list
 currentOrders = []
+checkoutCart = None
+
+def transferData(currentCart):
+    return currentCart
 
 listOfFoodTypes = ["Vegetables", "Fruit", "Milk", "Nuts","Jams", "Juices"]
 for i in range(len(listOfFoodTypes)):
@@ -467,7 +471,52 @@ class TestUI(QtWidgets.QWidget):
                 fr['orders'].append(self.CurrentCart)
 
             with open('Orders.json', 'w') as fw: json.dump(fr, fw)
+        def test():
+            return "E"
 
+        TestUI.checkoutCart = transferData(self.CurrentCart)
+        self.Checkout = CheckoutUI(self)
+        self.Checkout.show()
+        #self.Clear_Clicked() this needs to be put in the UI
+class CheckoutUI(QtWidgets.QWidget):
+    def __init__(self, parent=None):
+        QtWidgets.QWidget.__init__(self)
+        self.setupCheckout()
+    def setupCheckout(self):
+        #self.CurrentCart = []
+        #self.CurrentFoodType = "Null"
+        self.setGeometry(0, 0, 400, 200)
+        self.setWindowTitle('Checkout')
+        self.currentCart = TestUI.checkoutCart
+        self.Name = QtWidgets.QLineEdit(self)
+        self.Name.move(50,0)
+        self.Name.resize(300,50)
+
+        self.DeliveryOrPickup = QtWidgets.QComboBox(self)
+        self.DeliveryOrPickup.move(50, 60)
+        self.DeliveryOrPickup.setMinimumSize(300,50)
+        self.DeliveryOrPickup.addItem("Pickup")
+        self.DeliveryOrPickup.addItem("Delivery")
+
+        self.cardInfo(50, 150)
+
+
+        self.show()
+
+    def cardInfo(self, posx, posy):
+        #self.CardNumber = QtWidgets.QLineEdit(self)
+        self.ExpireMonth = QtWidgets.QComboBox(self)
+        self.ExpireMonth.move(posx,posy)
+        self.ExpireYear = QtWidgets.QComboBox(self)
+        self.ExpireYear.move(posx + 120,posy)
+        for i in range (12):
+            self.ExpireMonth.addItem(calendar.month_name[i + 1])
+        yearRange = 10000
+        startingYear = int(datetime.datetime.now().year)
+        print(startingYear, startingYear + yearRange)
+        for i in range(startingYear, startingYear + yearRange):
+            self.ExpireYear.addItem(str(i))
+            # print(i)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
