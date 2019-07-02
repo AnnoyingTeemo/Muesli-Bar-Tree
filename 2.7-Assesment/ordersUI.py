@@ -35,6 +35,7 @@ class TestUI(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         self.setup()
     def setup(self):
+        self.CurrentOrderName = None
         self.setGeometry(0, 0, 1500, 850)
         self.setWindowTitle('Test UI')
 

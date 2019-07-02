@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ordersUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ordersUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ordersUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="81" selection-end-column="40" />
+            <state relative-caret-position="601">
+              <caret line="37" column="36" lean-forward="false" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
               <folding>
                 <element signature="e#111#135#0" expanded="true" />
               </folding>
@@ -23,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test UI code combo 1.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Test UI code combo 1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test UI code combo 1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="514" column="45" lean-forward="true" selection-start-line="514" selection-start-column="45" selection-end-line="514" selection-end-column="45" />
+            <state relative-caret-position="200">
+              <caret line="506" column="46" lean-forward="false" selection-start-line="506" selection-start-column="46" selection-end-line="506" selection-end-column="46" />
               <folding>
                 <element signature="e#111#155#0" expanded="true" />
               </folding>
@@ -39,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/Orders.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="862" lean-forward="false" selection-start-line="0" selection-start-column="862" selection-end-line="0" selection-end-column="862" />
+              <caret line="0" column="113" lean-forward="false" selection-start-line="0" selection-start-column="113" selection-end-line="0" selection-end-column="113" />
               <folding />
             </state>
           </provider>
@@ -95,6 +95,7 @@
       <find>buttonC</find>
       <find>setup</find>
       <find>cart</find>
+      <find>test()</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -107,8 +108,8 @@
         <option value="$PROJECT_DIR$/Orders.txt" />
         <option value="$PROJECT_DIR$/Orders.json" />
         <option value="$PROJECT_DIR$/Foods.json" />
-        <option value="$PROJECT_DIR$/ordersUI.py" />
         <option value="$PROJECT_DIR$/Test UI code combo 1.py" />
+        <option value="$PROJECT_DIR$/ordersUI.py" />
       </list>
     </option>
   </component>
@@ -162,7 +163,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Test UI code combo 1">
+  <component name="RunManager" selected="Python.ordersUI">
     <configuration name="2.7 Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -239,8 +240,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.Test UI code combo 1" />
-        <item index="1" class="java.lang.String" itemvalue="Python.ordersUI" />
+        <item index="0" class="java.lang.String" itemvalue="Python.ordersUI" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Test UI code combo 1" />
         <item index="2" class="java.lang.String" itemvalue="Python.2.7 Main" />
         <item index="3" class="java.lang.String" itemvalue="Python.Test UI" />
       </list>
@@ -256,10 +257,10 @@
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.46810812" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48540542" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -589,21 +590,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Orders.json">
+    <entry file="file://$PROJECT_DIR$/Storing Old code just in case">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="862" lean-forward="false" selection-start-line="0" selection-start-column="862" selection-end-line="0" selection-end-column="862" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ordersUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="81" selection-end-column="40" />
-          <folding>
-            <element signature="e#111#135#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="5233">
+          <caret line="298" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -615,20 +605,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Storing Old code just in case">
+    <entry file="file://$PROJECT_DIR$/Orders.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5233">
-          <caret line="298" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="113" lean-forward="false" selection-start-line="0" selection-start-column="113" selection-end-line="0" selection-end-column="113" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test UI code combo 1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="514" column="45" lean-forward="true" selection-start-line="514" selection-start-column="45" selection-end-line="514" selection-end-column="45" />
+        <state relative-caret-position="200">
+          <caret line="506" column="46" lean-forward="false" selection-start-line="506" selection-start-column="46" selection-end-line="506" selection-end-column="46" />
           <folding>
             <element signature="e#111#155#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ordersUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="37" column="36" lean-forward="false" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+          <folding>
+            <element signature="e#111#135#0" expanded="true" />
           </folding>
         </state>
       </provider>

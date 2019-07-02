@@ -458,26 +458,20 @@ class TestUI(QtWidgets.QWidget):
             total += item
         print(total)
         print(self.CurrentCart)
-        # with open('Orders.txt', 'a') as f:
-        #     for item in self.CurrentCart:
-        #         f.write("%s," % item.rsplit(' ', 1)[0].replace(":", ""))
-        #     f.write("\n")
-
-        fr = None
-        if len(self.CurrentCart) > 0:
-            with open('Orders.json', 'r') as f:
-                fr = json.load(f)
-                print(fr)
-                fr['orders'].append(self.CurrentCart)
-
-            with open('Orders.json', 'w') as fw: json.dump(fr, fw)
-        def test():
-            return "E"
+        #code to checkout
+        # fr = None
+        # if len(self.CurrentCart) > 0:
+        #     with open('Orders.json', 'r') as f:
+        #         fr = json.load(f)
+        #         print(fr)
+        #         fr['orders'].append(self.CurrentCart)
+        #
+        #     with open('Orders.json', 'w') as fw: json.dump(fr, fw)
 
         TestUI.checkoutCart = transferData(self.CurrentCart)
         self.Checkout = CheckoutUI(self)
         self.Checkout.show()
-        #self.Clear_Clicked() this needs to be put in the UI
+
 class CheckoutUI(QtWidgets.QWidget):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self)
@@ -488,34 +482,50 @@ class CheckoutUI(QtWidgets.QWidget):
         self.setGeometry(0, 0, 400, 500)
         self.setWindowTitle('Checkout')
         self.currentCart = TestUI.checkoutCart
-        self.Name = QtWidgets.QLineEdit(self)
-        self.Name.move(50,0)
+        self.Name = QtWidgets.QLineEdit(self, placeholderText="Name")
+        self.Name.move(50,10)
         self.Name.resize(300,50)
 
         self.DeliveryOrPickup = QtWidgets.QComboBox(self)
-        self.DeliveryOrPickup.move(50, 60)
+        self.DeliveryOrPickup.move(50, 70)
         self.DeliveryOrPickup.setMinimumSize(300,50)
         self.DeliveryOrPickup.addItem("Pickup")
         self.DeliveryOrPickup.addItem("Delivery")
 
-        self.cardInfo(50, 150)
 
+        self.cardInfo(50, 150)
+        print(self.currentCart)
 
         self.show()
+    def checkout(self):
+        fr = None
+        if len(self.currentCart) > 0:
+            with open('Orders.json', 'r') as f:
+                fr = json.load(f)
+                print(fr)
+                if self.Name.text() == "":
+                    self.Name.setText("Unknown")
+                self.currentCart.append(self.Name.text())
+                fr['orders'].append(self.currentCart)
 
+            with open('Orders.json', 'w') as fw: json.dump(fr, fw)
+            self.close()
     def cardInfo(self, posx, posy):
-        self.CardNumber = QtWidgets.QLineEdit(self)
-        self.SecurityCode = QtWidgets.QLineEdit(self)
+        self.CardNumber = QtWidgets.QLineEdit(self, placeholderText="Card Number")
+        self.SecurityCode = QtWidgets.QLineEdit(self, placeholderText="Security Code")
         self.ExpireMonth = QtWidgets.QComboBox(self)
         self.ExpireYear = QtWidgets.QComboBox(self)
+        self.Order = QtWidgets.QPushButton("Place Order", self)
+        self.Order.clicked.connect(self.checkout)
 
+        self.Order.move(posx, posy + 150)
         self.CardNumber.move(posx,posy + 50)
         self.SecurityCode.move(posx, posy + 100)
         self.ExpireMonth.move(posx,posy)
         self.ExpireYear.move(posx + 120,posy)
         for i in range (12):
             self.ExpireMonth.addItem(calendar.month_name[i + 1])
-        yearRange = 10000
+        yearRange = 1001
         startingYear = int(datetime.datetime.now().year)
         print(startingYear, startingYear + yearRange)
         for i in range(startingYear, startingYear + yearRange):
