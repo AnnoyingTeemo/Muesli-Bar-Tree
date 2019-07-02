@@ -286,8 +286,10 @@ class TestUI(QtWidgets.QWidget):
         self.CurrentFoodType = "Fruit"
         self.show()
     def Food0Clicked(self):
+        print(self.CurrentCart)#trying to find why name is getting into self.currentCart
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
         self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
+        print(self.CurrentCart)
         total = 0
         cartText = []
         for item in Counter(self.CurrentCart):
@@ -298,6 +300,7 @@ class TestUI(QtWidgets.QWidget):
         for item in self.currentOrders:
             total += item
             self.Total.setText(f"Total: ${cint(total)}")
+        print(self.Cart, cartText)
     def Food1Clicked(self):
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food1.objectName()]["RawPrice"])
         self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food1.objectName()]["Price"]}')
@@ -471,7 +474,7 @@ class TestUI(QtWidgets.QWidget):
         TestUI.checkoutCart = transferData(self.CurrentCart)
         self.Checkout = CheckoutUI(self)
         self.Checkout.show()
-
+        #self.CurrentCart.clear()
 class CheckoutUI(QtWidgets.QWidget):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self)
@@ -505,7 +508,9 @@ class CheckoutUI(QtWidgets.QWidget):
                 print(fr)
                 if self.Name.text() == "":
                     self.Name.setText("Unknown")
-                self.currentCart.append(self.Name.text())
+                self.currentCart.insert(0, self.DeliveryOrPickup.currentText())
+                self.currentCart.insert(0, self.Name.text())
+                # self.currentCart.append(self.Name.text())
                 fr['orders'].append(self.currentCart)
 
             with open('Orders.json', 'w') as fw: json.dump(fr, fw)

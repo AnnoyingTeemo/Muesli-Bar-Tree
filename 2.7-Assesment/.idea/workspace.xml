@@ -11,11 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="ordersUI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ordersUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ordersUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
-              <caret line="37" column="36" lean-forward="false" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
+            <state relative-caret-position="247">
+              <caret line="187" column="0" lean-forward="false" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
               <folding>
                 <element signature="e#111#135#0" expanded="true" />
               </folding>
@@ -23,34 +23,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Test UI code combo 1.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="deliveries.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/deliveries.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="83" lean-forward="true" selection-start-line="0" selection-start-column="83" selection-end-line="0" selection-end-column="83" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test UI code combo 1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Test UI code combo 1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="506" column="46" lean-forward="false" selection-start-line="506" selection-start-column="46" selection-end-line="506" selection-end-column="46" />
+            <state relative-caret-position="172">
+              <caret line="288" column="77" lean-forward="false" selection-start-line="288" selection-start-column="77" selection-end-line="288" selection-end-column="77" />
               <folding>
                 <element signature="e#111#155#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Orders.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Orders.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="113" lean-forward="false" selection-start-line="0" selection-start-column="113" selection-end-line="0" selection-end-column="113" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Foods.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Foods.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="83" lean-forward="false" selection-start-line="0" selection-start-column="83" selection-end-line="0" selection-end-column="83" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -66,14 +56,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>currentorder</find>
-      <find>current</find>
-      <find>Test</find>
-      <find>Total.set</find>
-      <find>testDictionary</find>
-      <find>Food2.clicked.connect</find>
-      <find>Juices_Clicked</find>
-      <find>Fruits_Clicked</find>
       <find>FoodsDiction</find>
       <find>total.set</find>
       <find>Total.settext</find>
@@ -88,7 +70,6 @@
       <find>Orders_C</find>
       <find>.show()</find>
       <find>checkout</find>
-      <find>currentOrders</find>
       <find>refr</find>
       <find>refreshCurrentOrders</find>
       <find>showbuttons</find>
@@ -96,6 +77,15 @@
       <find>setup</find>
       <find>cart</find>
       <find>test()</find>
+      <find>QcomboBox</find>
+      <find>Foodtypetext</find>
+      <find>self.OrdersList.append</find>
+      <find>name</find>
+      <find>.append</find>
+      <find>QlineEdit</find>
+      <find>Pick</find>
+      <find>buttonclicked</find>
+      <find>currentOrders</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -108,8 +98,10 @@
         <option value="$PROJECT_DIR$/Orders.txt" />
         <option value="$PROJECT_DIR$/Orders.json" />
         <option value="$PROJECT_DIR$/Foods.json" />
-        <option value="$PROJECT_DIR$/Test UI code combo 1.py" />
+        <option value="$PROJECT_DIR$/pickups.json" />
+        <option value="$PROJECT_DIR$/deliveries.json" />
         <option value="$PROJECT_DIR$/ordersUI.py" />
+        <option value="$PROJECT_DIR$/Test UI code combo 1.py" />
       </list>
     </option>
   </component>
@@ -240,8 +232,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.ordersUI" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Test UI code combo 1" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Test UI code combo 1" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ordersUI" />
         <item index="2" class="java.lang.String" itemvalue="Python.2.7 Main" />
         <item index="3" class="java.lang.String" itemvalue="Python.Test UI" />
       </list>
@@ -257,11 +249,11 @@
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.48540542" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50324327" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938388" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3992891" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -569,20 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pickups.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/deliveries.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Foods.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -597,6 +575,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pickups.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Orders.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="95" lean-forward="false" selection-start-line="0" selection-start-column="95" selection-end-line="0" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Foods.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -605,30 +599,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Orders.json">
+    <entry file="file://$PROJECT_DIR$/ordersUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="187" column="0" lean-forward="false" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+          <folding>
+            <element signature="e#111#135#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deliveries.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="113" lean-forward="false" selection-start-line="0" selection-start-column="113" selection-end-line="0" selection-end-column="113" />
+          <caret line="0" column="83" lean-forward="true" selection-start-line="0" selection-start-column="83" selection-end-line="0" selection-end-column="83" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test UI code combo 1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="506" column="46" lean-forward="false" selection-start-line="506" selection-start-column="46" selection-end-line="506" selection-end-column="46" />
+        <state relative-caret-position="172">
+          <caret line="288" column="77" lean-forward="false" selection-start-line="288" selection-start-column="77" selection-end-line="288" selection-end-column="77" />
           <folding>
             <element signature="e#111#155#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ordersUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="37" column="36" lean-forward="false" selection-start-line="37" selection-start-column="36" selection-end-line="37" selection-end-column="36" />
-          <folding>
-            <element signature="e#111#135#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -58,7 +58,7 @@ class TestUI(QtWidgets.QWidget):
         self.AllOrders = ""
         #code to show orders
         for item in currentOrders:
-            for food in item:
+            for food in item[2:]:
                 self.AllOrders += f"{(food.rsplit(' ', 1)[0].replace(':', ''))} "
             self.AllOrders += "\n"
         self.OrdersList.setText(self.AllOrders)
@@ -78,11 +78,11 @@ class TestUI(QtWidgets.QWidget):
         self.FoodTypetext.move(500,500)
         self.FoodTypetext.resize(300,50)
 
-        self.FoodNametext = QtWidgets.QLineEdit(self)
+        self.FoodNametext = QtWidgets.QLineEdit(self, placeholderText="Name of Food")
         self.FoodNametext.move(500,560)
         self.FoodNametext.resize(300,50)
 
-        self.FoodPricetext = QtWidgets.QLineEdit(self)
+        self.FoodPricetext = QtWidgets.QLineEdit(self, placeholderText="Price of Food")
         self.FoodPricetext.move(500,620)
         self.FoodPricetext.resize(300,50)
 
@@ -159,6 +159,7 @@ class TestUI(QtWidgets.QWidget):
         self.completeOrder = QtWidgets.QPushButton("Complete Order", self)
         self.completeOrder.setMinimumSize(220,130)
         self.completeOrder.move(1230,670)
+        self.completeOrder.clicked.connect(self.completeOrderClicked)
 
         self.cancelOrder = QtWidgets.QPushButton("Cancel Order", self)
         self.cancelOrder.setMinimumSize(220,130)
@@ -170,13 +171,37 @@ class TestUI(QtWidgets.QWidget):
         self.hideFoods()
 
         self.show()
+    def completeOrderClicked(self):
+        currentOrders = refreshCurrentOrders()
+        if currentOrders[self.selectedOrder][1] == "Pickup":
+            with open('pickups.json', 'r') as f:
+                fr = json.load(f)
+                fr['pickups'].append(currentOrders[self.selectedOrder])
+                #del(fr["orders"][self.selectedOrder])
+            with open('pickups.json', 'w') as fw: json.dump(fr, fw)
+        elif currentOrders[self.selectedOrder][1] == "Delivery":
+            with open('deliveries.json', 'r') as f:
+                fr = json.load(f)
+                fr['deliveries'].append(currentOrders[self.selectedOrder])
+                #del(fr["orders"][self.selectedOrder])
+            with open('deliveries.json', 'w') as fw: json.dump(fr, fw)
+
+        with open('Orders.json', 'r') as f:
+            fr = json.load(f)
+            #print(fr)
+            #print(self.selectedOrder)
+            del(fr["orders"][self.selectedOrder])
+            #del[fr[][self.selectedOrder]]
+        with open('Orders.json', 'w') as fw: json.dump(fr, fw)
+        currentOrders = refreshCurrentOrders()
+        self.OrdersList.clear()
+        self.hideButtons()
+        self.showOrders()
+        self.showButtons()
     def cancel_order(self):
         with open('Orders.json', 'r') as f:
-                    fr = json.load(f)
-                    #print(fr)
-                    #print(self.selectedOrder)
-                    del(fr["orders"][self.selectedOrder])
-                    #del[fr[][self.selectedOrder]]
+                fr = json.load(f)
+                del(fr["orders"][self.selectedOrder])
         with open('Orders.json', 'w') as fw: json.dump(fr, fw)
         currentOrders = refreshCurrentOrders()
         self.OrdersList.clear()
@@ -187,7 +212,9 @@ class TestUI(QtWidgets.QWidget):
         currentOrders = refreshCurrentOrders()
         self.OrdersList.clear()
         self.selectedOrder = i
-        for item in currentOrders[i]:
+        self.OrdersList.append(f"Name: {currentOrders[i][0]}")
+        self.OrdersList.append(f"Pickup or Dilivery: {currentOrders[i][1]}")
+        for item in currentOrders[i][2:]:
             self.OrdersList.append(item)
 
     def DeletePressed(self):
