@@ -160,12 +160,13 @@ class TestUI(QtWidgets.QWidget):
         self.completeOrder.setMinimumSize(220,130)
         self.completeOrder.move(1230,670)
         self.completeOrder.clicked.connect(self.completeOrderClicked)
+        self.completeOrder.hide()
 
         self.cancelOrder = QtWidgets.QPushButton("Cancel Order", self)
         self.cancelOrder.setMinimumSize(220,130)
         self.cancelOrder.move(1000,670)
         self.cancelOrder.clicked.connect(self.cancel_order)
-
+        self.cancelOrder.hide()
         self.hideButtons()
         self.hideOrders()
         self.hideFoods()
@@ -216,7 +217,8 @@ class TestUI(QtWidgets.QWidget):
         self.OrdersList.append(f"Pickup or Dilivery: {currentOrders[i][1]}")
         for item in currentOrders[i][2:]:
             self.OrdersList.append(item)
-
+        self.cancelOrder.show()
+        self.completeOrder.show()
     def DeletePressed(self):
         with open('Foods.json', 'r') as f:
                 fr = json.load(f)
@@ -285,8 +287,8 @@ class TestUI(QtWidgets.QWidget):
         self.FoodTypetext.show()
     def showOrders(self):
         self.OrdersList.show()
-        self.cancelOrder.show()
-        self.completeOrder.show()
+        #self.cancelOrder.show()
+        #self.completeOrder.show()
     def hideOrders(self):
         self.cancelOrder.hide()
         self.completeOrder.hide()

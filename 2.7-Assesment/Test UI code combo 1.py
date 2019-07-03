@@ -455,6 +455,9 @@ class TestUI(QtWidgets.QWidget):
         self.currentOrders = []
         self.CurrentCart = []
         self.Total.setText("Total: $0")
+    def FakeClear(self):
+        self.Cart.setText("")
+        self.Total.setText("Total: $0")
     def CheckOut_Clicked(self):
         total = 0
         for item in self.currentOrders:
@@ -474,6 +477,12 @@ class TestUI(QtWidgets.QWidget):
         TestUI.checkoutCart = transferData(self.CurrentCart)
         self.Checkout = CheckoutUI(self)
         self.Checkout.show()
+        #self.Cart.setText("")
+        self.currentOrders = []
+        self.CurrentCart = []
+        TestUI.Cart = self.Cart
+        TestUI.Total = self.Total
+        #self.Total.setText("Total: $0")
         #self.CurrentCart.clear()
 class CheckoutUI(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -514,6 +523,7 @@ class CheckoutUI(QtWidgets.QWidget):
                 fr['orders'].append(self.currentCart)
 
             with open('Orders.json', 'w') as fw: json.dump(fr, fw)
+            TestUI.FakeClear(TestUI)
             self.close()
     def cardInfo(self, posx, posy):
         self.CardNumber = QtWidgets.QLineEdit(self, placeholderText="Card Number")
