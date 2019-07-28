@@ -11,6 +11,7 @@ foods = json.loads(foods)
 #fruits, vegies, milk products, nuts, jams, juices
 def cint(codeinfo): return "{:,}".format(codeinfo)
 #Stuff for Setup
+#setting up all the lists that I need to place info in later in the code
 FoodTypesList = ['fruits', 'vegies', 'milk_products', 'nuts', 'jams', 'juices']
 testDictionary = {
     "Fruit": {},
@@ -32,9 +33,11 @@ amountOfWords = 0
 currentOrders = []
 checkoutCart = None
 
+#for some reason this is the easiest way to move data from one variable to another between my 2 classes
 def transferData(currentCart):
     return currentCart
 
+#setting up all the foods that im using into a dictionary
 listOfFoodTypes = ["Vegetables", "Fruit", "Milk", "Nuts","Jams", "Juices"]
 for i in range(len(listOfFoodTypes)):
     e = 0
@@ -88,6 +91,7 @@ class TestUI(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         self.setup()
     def setup(self):
+        #setting up all the buttons in their correct place, maximum of 12 of each type of food else the screen would be too full.
         self.CurrentCart = []
         self.CurrentFoodType = "Null"
         self.setGeometry(0, 0, 1500, 850)
@@ -218,11 +222,12 @@ class TestUI(QtWidgets.QWidget):
         self.Food11.hide()
         self.Food11.clicked.connect(self.Food11Clicked)
 
+        #dictionary with all the buttons in it for ease of access
         self.FoodsDictionary = {0: self.Food0, 1: self.Food1, 2: self.Food2, 3: self.Food3, 4: self.Food4, 5: self.Food5, 6: self.Food6, 7: self.Food7, 8: self.Food8, 9: self.Food9, 10: self.Food10, 11: self.Food11}
 
         self.currentOrders = []
         self.show()
-    #Code for buttons warning terrible code ahead
+    #Code for buttons
 
     def Veges_Clicked(self):
         for i in range(len(self.FoodsDictionary)):
