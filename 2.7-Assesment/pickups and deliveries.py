@@ -79,19 +79,36 @@ class TestUI(QtWidgets.QWidget):
             print(i,x,y)
             #Button.hide()
 
-        self.OrdersList = QtWidgets.QTextBrowser(self)
-        self.OrdersList.setMinimumSize(450,600)
-        self.OrdersList.move(1000,10)
-        self.AllOrders = ""
+        self.PickupsList = QtWidgets.QTextBrowser(self)
+        self.PickupsList.setMinimumSize(450,600)
+        self.PickupsList.move(1000,10)
+        self.AllPickups = ""
         #code to show orders
         for item in currentPickups:
             for food in item[2:]:
                 #self.AllOrders += f"{food}"
-                self.AllOrders += f"{(food.rsplit(' ', 1)[0].replace(':', ''))} "
-            self.AllOrders += "\n"
-        self.OrdersList.setText(self.AllOrders)
-        add stuff for currentDeliveries aswell. make 2 uis one for each.
+                self.AllPickups += f"{(food.rsplit(' ', 1)[0].replace(':', ''))} "
+            self.AllPickups += "\n"
+        self.PickupsList.setText(self.AllPickups)
 
+        #add stuff for currentDeliveries aswell. make 2 uis one for each.
+
+        self.DeliveriesList = QtWidgets.QTextBrowser(self)
+        self.DeliveriesList.setMinimumSize(450,600)
+        self.DeliveriesList.move(1000,10)
+        self.AllDeliveries = ""
+        #code to show orders
+        for item in currentDeliveries:
+            for food in item[2:]:
+                #self.AllOrders += f"{food}"
+                self.AllDeliveries += f"{(food.rsplit(' ', 1)[0].replace(':', ''))} "
+            self.AllDeliveries += "\n"
+        self.DeliveriesList.setText(self.AllDeliveries)
+
+        self.DeliveriesList.hide()
+        self.PickupsList.hide()
+        for object in self.buttons:
+            object.hide()
         self.show()
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

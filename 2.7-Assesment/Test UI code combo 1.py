@@ -62,6 +62,7 @@ for i in range(len(listOfFoodTypes)):
         e += 1
 print(testDictionary)
 
+#adding foods in each food type to lists
 for item in testDictionary["Fruit"]:
         if testDictionary["Fruit"][item]["Type of food"] == "Fruit":
             FruitsList.append(item)
@@ -96,7 +97,7 @@ class TestUI(QtWidgets.QWidget):
         self.CurrentFoodType = "Null"
         self.setGeometry(0, 0, 1500, 850)
         self.setWindowTitle('Test UI')
-        #Buttons code goes here
+        #Setting up foot types buttons
         self.Fruits = QtWidgets.QPushButton("Fruits", self)
         self.Fruits.setMinimumSize(130,130)
         self.Fruits.move(30, 10)
@@ -128,27 +129,31 @@ class TestUI(QtWidgets.QWidget):
         self.Juices.clicked.connect(self.Juices_Clicked)
 
         #Checkout Code
+        #creating cart
         self.Cart = QtWidgets.QTextBrowser(self)
         self.Cart.setMinimumSize(450,600)
         self.Cart.move(1000,10)
 
-        #Total Text goes here, it needs to blend into the checkout
+        #Total Text goes here
         self.Total = QtWidgets.QTextBrowser(self)
         self.Total.setMinimumSize(450,10)
         self.Total.setText("Total: $0")
         self.Total.setMaximumHeight(50)
         self.Total.move(1000,610)
 
+        #checkout buttons
         self.Checkout = QtWidgets.QPushButton("Checkout", self)
         self.Checkout.setMinimumSize(220,130)
         self.Checkout.move(1230,670)
         self.Checkout.clicked.connect(self.CheckOut_Clicked)
 
+        #clear checkout button
         self.Clear = QtWidgets.QPushButton("Clear Cart", self)
         self.Clear.setMinimumSize(220,130)
         self.Clear.move(1000,670)
         self.Clear.clicked.connect(self.Clear_Clicked)
 
+        #All the buttons for the types of food, they are then put in a list
         self.Food0 = QtWidgets.QPushButton("Food0", self)
         self.Food0.setMinimumSize(130,130)
         self.Food0.move(30,200)
@@ -229,6 +234,7 @@ class TestUI(QtWidgets.QWidget):
         self.show()
     #Code for buttons
 
+    #code for if each food types button is clicked
     def Veges_Clicked(self):
         for i in range(len(self.FoodsDictionary)):
             self.FoodsDictionary[i].hide()
@@ -290,8 +296,8 @@ class TestUI(QtWidgets.QWidget):
             self.FoodsDictionary[i].setObjectName(testDictionary["Fruit"][FruitsList[i]]["ObjectName"])
         self.CurrentFoodType = "Fruit"
         self.show()
+    #if each of the buttons is clicked.
     def Food0Clicked(self):
-        print(self.CurrentCart)#trying to find why name is getting into self.currentCart
         self.currentOrders.append(testDictionary[self.CurrentFoodType][self.Food0.objectName()]["RawPrice"])
         self.CurrentCart.append(f'{testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Name"]}: {testDictionary[self.CurrentFoodType][self.Food0.objectName()]["Price"]}')
         print(self.CurrentCart)
