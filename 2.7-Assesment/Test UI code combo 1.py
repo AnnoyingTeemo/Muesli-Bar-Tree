@@ -277,7 +277,6 @@ class TestUI(QtWidgets.QWidget):
         self.CurrentFoodType = "Jams"
         #self.Cart.append(random.randint(0, 10000)) This crashed it
         self.show()
-
     def Juices_Clicked(self):
         for i in range(len(self.FoodsDictionary)):
             self.FoodsDictionary[i].hide()
