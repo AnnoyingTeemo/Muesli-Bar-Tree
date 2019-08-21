@@ -6,6 +6,10 @@ import sys, random, json, datetime, calendar
 from collections import Counter
 from PyQt5 import QtWidgets
 
+from PyQt5.QtCore import QSize
+from PyQt5.QtGui import QImage, QPalette, QBrush
+from PyQt5.QtWidgets import *
+
 with open("Foods.json", "r") as f: foods = f.read()
 foods = json.loads(foods)
 #fruits, vegies, milk products, nuts, jams, juices
@@ -90,6 +94,14 @@ print(JuicesList)
 class TestUI(QtWidgets.QWidget):
     def __init__(self):
         QtWidgets.QWidget.__init__(self)
+
+        oImage = QImage("background.jpg")
+        sImage = oImage.scaled(QSize(1500,850))
+        palette = QPalette()
+        palette.setBrush(10, QBrush(sImage))
+        self.setPalette(palette)
+
+
         self.setup()
     def setup(self):
         #setting up all the buttons in their correct place, maximum of 12 of each type of food else the screen would be too full.
@@ -102,37 +114,47 @@ class TestUI(QtWidgets.QWidget):
         self.Fruits.setMinimumSize(130,130)
         self.Fruits.move(30, 10)
         self.Fruits.clicked.connect(self.Fruits_Clicked)
+        self.Fruits.setStyleSheet("background-color: #d7d5d6; color: black")
 
         self.Vegetables = QtWidgets.QPushButton("Vegetables", self)
         self.Vegetables.setMinimumSize(130,130)
         self.Vegetables.move(190, 10)
         self.Vegetables.clicked.connect(self.Veges_Clicked)
+        self.Vegetables.setStyleSheet("background-color: #d7d5d6; color: black")
 
         self.MilkProducts = QtWidgets.QPushButton("Milk Products", self)
         self.MilkProducts.setMinimumSize(130,130)
         self.MilkProducts.move(350, 10)
         self.MilkProducts.clicked.connect(self.Milk_Clicked)
+        self.MilkProducts.setStyleSheet("background-color: #d7d5d6; color: black")
+
 
         self.Nuts = QtWidgets.QPushButton("Nuts", self)
         self.Nuts.setMinimumSize(130,130)
         self.Nuts.move(510, 10)
         self.Nuts.clicked.connect(self.Nuts_Clicked)
+        self.Nuts.setStyleSheet("background-color: #d7d5d6; color: black")
+
 
         self.Jams = QtWidgets.QPushButton("Jams", self)
         self.Jams.setMinimumSize(130,130)
         self.Jams.move(670, 10)
         self.Jams.clicked.connect(self.Jams_Clicked)
+        self.Jams.setStyleSheet("background-color: #d7d5d6; color: black")
 
+        
         self.Juices = QtWidgets.QPushButton("Juices", self)
         self.Juices.setMinimumSize(130,130)
         self.Juices.move(830, 10)
         self.Juices.clicked.connect(self.Juices_Clicked)
+        self.Juices.setStyleSheet("background-color: #d7d5d6; color: black")
 
         #Checkout Code
         #creating cart
         self.Cart = QtWidgets.QTextBrowser(self)
         self.Cart.setMinimumSize(450,600)
         self.Cart.move(1000,10)
+        self.Cart.setStyleSheet("background: rgba(255,255,255,0.5)")
 
         #Total Text goes here
         self.Total = QtWidgets.QTextBrowser(self)
@@ -140,18 +162,20 @@ class TestUI(QtWidgets.QWidget):
         self.Total.setText("Total: $0")
         self.Total.setMaximumHeight(50)
         self.Total.move(1000,610)
-
+        self.Total.setStyleSheet("background: rgba(255,255,255,0.5)")
         #checkout buttons
         self.Checkout = QtWidgets.QPushButton("Checkout", self)
         self.Checkout.setMinimumSize(220,130)
         self.Checkout.move(1230,670)
         self.Checkout.clicked.connect(self.CheckOut_Clicked)
+        self.Checkout.setStyleSheet("background-color: rgba(255, 255, 255, 0.6); color: black; font-family: 'Dubai'; font-size: 30px")
 
         #clear checkout button
         self.Clear = QtWidgets.QPushButton("Clear Cart", self)
         self.Clear.setMinimumSize(220,130)
         self.Clear.move(1000,670)
         self.Clear.clicked.connect(self.Clear_Clicked)
+        self.Clear.setStyleSheet("background-color: rgba(255, 255, 255, 0.6); color: black; font-family: 'Dubai'; font-size: 30px")
 
         #All the buttons for the types of food, they are then put in a list
         self.Food0 = QtWidgets.QPushButton("Food0", self)
@@ -226,10 +250,10 @@ class TestUI(QtWidgets.QWidget):
         self.Food11.setObjectName("Food 11")
         self.Food11.hide()
         self.Food11.clicked.connect(self.Food11Clicked)
-
         #dictionary with all the buttons in it for ease of access
         self.FoodsDictionary = {0: self.Food0, 1: self.Food1, 2: self.Food2, 3: self.Food3, 4: self.Food4, 5: self.Food5, 6: self.Food6, 7: self.Food7, 8: self.Food8, 9: self.Food9, 10: self.Food10, 11: self.Food11}
-
+        for i in range(len(self.FoodsDictionary)):
+            self.FoodsDictionary[i].setStyleSheet("background-color: #d7d5d6; color: black")
         self.currentOrders = []
         self.show()
     #Code for buttons
